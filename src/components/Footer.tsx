@@ -13,22 +13,26 @@ const tap =
 type FooterLink = { to: string; label: string; soon?: boolean };
 type FooterColumn = { title: string; links: FooterLink[] };
 
+const SOLUTION_LINKS: FooterLink[] = [
+  { to: "/solutions/whatsapp-marketing", label: "WhatsApp Marketing" },
+  { to: "/solutions/ai-sales-automation", label: "AI Sales Automation" },
+  { to: "/solutions/lead-generation-software", label: "Lead Generation" },
+  { to: "/solutions/instagram-automation", label: "Instagram Automation" },
+  { to: "/features", label: "All 10 Feature Modules" },
+];
+
 const PRODUCT_LINKS: FooterLink[] = [
-  { to: "/features", label: "Features hub" },
   { to: "/how-it-works", label: "How it works" },
   { to: "/use-cases", label: "Use cases" },
   { to: "/pricing", label: "Pricing" },
   { to: "/security", label: "Security & Trust" },
+  { to: "/features/ai-workflows-mcp", label: "Claude MCP Endpoint" },
+  { to: "/features/whatsapp-crm-inbox", label: "WhatsApp Shared Inbox" },
 ];
 
-const FEATURE_LINKS: FooterLink[] = FEATURES.map((feature) => ({
-  to: `/features/${feature.slug}`,
-  label: feature.navLabel,
-  soon: feature.status === "soon",
-}));
-
-const COMPANY_LINKS: FooterLink[] = [
-  { to: "/about", label: "About & contact" },
+const RESOURCE_LINKS: FooterLink[] = [
+  { to: "/blog", label: "Blog & Playbooks" },
+  { to: "/about", label: "About & Contact" },
   { to: "/about#waitlist", label: "Join the waitlist" },
 ];
 
@@ -41,9 +45,9 @@ const LEGAL_LINKS: FooterLink[] = [
 ];
 
 const COLUMNS: FooterColumn[] = [
+  { title: "Solutions", links: SOLUTION_LINKS },
   { title: "Product", links: PRODUCT_LINKS },
-  { title: "Features", links: FEATURE_LINKS },
-  { title: "Company", links: COMPANY_LINKS },
+  { title: "Resources", links: RESOURCE_LINKS },
   { title: "Legal", links: LEGAL_LINKS },
 ];
 

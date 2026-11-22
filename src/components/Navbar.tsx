@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FEATURES } from "../data/features";
+import { SOLUTIONS } from "../data/solutions";
 import { useTheme } from "../lib/theme";
 import { ComingSoon, Logo } from "./ui";
 import { openWaitlistModal, useWaitlistCount } from "../lib/waitlist";
@@ -25,6 +26,7 @@ import {
 const PRIMARY_LINKS = [
   { to: "/how-it-works", label: "How it works" },
   { to: "/use-cases", label: "Use cases" },
+  { to: "/blog", label: "Blog" },
   { to: "/pricing", label: "Pricing" },
   { to: "/security", label: "Security" },
   { to: "/about", label: "About" },
@@ -91,11 +93,10 @@ function FeatureMenu({ onNavigate }: { onNavigate?: () => void }) {
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
-        className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold transition ${
-          open
+        className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold transition ${open
             ? "bg-stone-100 text-stone-900 dark:bg-white/10 dark:text-white"
             : "text-stone-600 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-white/10 dark:hover:text-white"
-        }`}
+          }`}
       >
         Features
         <ChevronDownIcon
@@ -147,6 +148,80 @@ function FeatureMenu({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
+function SolutionsMenu({ onNavigate }: { onNavigate?: () => void }) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  useEffect(() => setOpen(false), [location.pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDocClick = (event: MouseEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onDocClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDocClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={containerRef} className="relative">
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+        className={`inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-semibold transition ${open
+            ? "bg-stone-100 text-stone-900 dark:bg-white/10 dark:text-white"
+            : "text-stone-600 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-white/10 dark:hover:text-white"
+          }`}
+      >
+        Solutions
+        <ChevronDownIcon
+          size={15}
+          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="mega-spring absolute left-1/2 top-full z-50 mt-3 w-[min(92vw,480px)] -translate-x-1/2 overflow-hidden rounded-2xl border border-stone-200 bg-white p-2 shadow-[0_30px_70px_-30px_rgba(15,23,42,0.35)] dark:border-white/10 dark:bg-[#151228] dark:shadow-[0_30px_70px_-30px_rgba(0,0,0,0.8)]">
+          <div className="grid grid-cols-1 gap-1">
+            {SOLUTIONS.map((solution, index) => (
+              <Link
+                key={solution.slug}
+                to={`/solutions/${solution.slug}`}
+                onClick={onNavigate}
+                style={{ animationDelay: `${0.05 + index * 0.03}s` }}
+                className="mega-item flex items-start gap-3 rounded-xl p-3 transition hover:bg-stone-50 dark:hover:bg-white/[0.06]"
+              >
+                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600 dark:bg-brand-400/10 dark:text-brand-400">
+                  <ZapIcon size={16} />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-stone-800 dark:text-stone-100">
+                    {solution.eyebrow}
+                  </p>
+                  <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-1">
+                    {solution.heroHeadline}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function Navbar() {
   const { count, total } = useWaitlistCount();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -173,34 +248,32 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
           ? "border-b border-transparent bg-transparent py-2"
           : "border-b border-stone-200 bg-white/80 py-0 backdrop-blur-xl dark:border-white/10 dark:bg-[#0b0a14]/80"
-      }`}
+        }`}
     >
       <nav
         aria-label="Main"
-        className={`container-x flex h-16 items-center justify-between gap-4 transition-all duration-300 ${
-          scrolled
+        className={`container-x flex h-16 items-center justify-between gap-4 transition-all duration-300 ${scrolled
             ? "rounded-2xl border border-stone-200/70 bg-white/70 px-4 shadow-[0_10px_40px_-24px_rgba(15,23,42,0.4)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0B0A1A]/70"
             : "rounded-2xl border border-transparent px-0"
-        }`}
+          }`}
       >
         <Logo />
 
         {/* Desktop links */}
         <div className="hidden items-center gap-1 lg:flex">
           <FeatureMenu />
+          <SolutionsMenu />
           {PRIMARY_LINKS.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `rounded-full px-3.5 py-2 text-sm font-semibold transition ${
-                  isActive
-                    ? "bg-stone-100 text-stone-900 dark:bg-white/10 dark:text-white"
-                    : "text-stone-600 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-white/10 dark:hover:text-white"
+                `rounded-full px-3.5 py-2 text-sm font-semibold transition ${isActive
+                  ? "bg-stone-100 text-stone-900 dark:bg-white/10 dark:text-white"
+                  : "text-stone-600 hover:bg-stone-100 hover:text-stone-900 dark:text-stone-300 dark:hover:bg-white/10 dark:hover:text-white"
                 }`
               }
             >
@@ -242,6 +315,23 @@ export function Navbar() {
         >
           <div className="container-x max-h-[70vh] overflow-y-auto py-4">
             <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+              Solutions
+            </p>
+            <div className="grid grid-cols-1 gap-1 pb-4 mb-4 border-b border-stone-100 dark:border-white/5">
+              {SOLUTIONS.map((solution) => (
+                <Link
+                  key={solution.slug}
+                  to={`/solutions/${solution.slug}`}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-bold text-stone-800 transition hover:bg-stone-50 dark:text-stone-100 dark:hover:bg-white/5"
+                >
+                  <span>{solution.title}</span>
+                  <span className="text-xs text-brand-600 dark:text-brand-400">→</span>
+                </Link>
+              ))}
+            </div>
+
+            <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
               Features
             </p>
             <div className="grid grid-cols-1 gap-1">
@@ -249,44 +339,44 @@ export function Navbar() {
                 <Link
                   key={feature.slug}
                   to={`/features/${feature.slug}`}
-                  className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-700 transition hover:bg-stone-100 dark:text-stone-200 dark:hover:bg-white/10"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-stone-700 transition hover:bg-stone-50 dark:text-stone-200 dark:hover:bg-white/5"
                 >
-                  {feature.navLabel}
-                  {feature.status === "soon" && <ComingSoon />}
+                  <span className="flex items-center gap-2">
+                    {feature.navLabel}
+                    {feature.status === "soon" && <ComingSoon />}
+                  </span>
+                  <span className="text-xs text-stone-400">→</span>
                 </Link>
               ))}
             </div>
+
             <div className="mt-4 border-t border-stone-200 pt-3 dark:border-white/10">
-              <div className="grid grid-cols-1 gap-1">
                 {PRIMARY_LINKS.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
-                    className="rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-700 transition hover:bg-stone-100 dark:text-stone-200 dark:hover:bg-white/10"
+                    onClick={() => setMobileOpen(false)}
+                    className="block rounded-xl px-3 py-2 text-sm font-semibold text-stone-800 transition hover:bg-stone-50 dark:text-stone-100 dark:hover:bg-white/5"
                   >
                     {link.label}
                   </Link>
-                ))}
-                <Link
-                  to="/features"
-                  className="rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-700 transition hover:bg-stone-100 dark:text-stone-200 dark:hover:bg-white/10"
-                >
-                  All features
-                </Link>
-              </div>
+              ))}
+            </div>
+
+            <div className="mt-5 px-1">
               <button
                 type="button"
                 onClick={() => {
                   setMobileOpen(false);
                   openWaitlistModal();
                 }}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-sm font-bold text-white shadow-[0_10px_26px_-12px_rgba(124,58,237,0.9)]"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 py-3 text-sm font-bold text-white shadow-md transition hover:bg-brand-500"
               >
                 <span>Join the waitlist</span>
-                <span className="rounded-full bg-white/20 px-2 py-0.5 font-mono text-xs font-extrabold text-white">
-                  {count}/{total}
-                </span>
-                <CheckIcon size={15} />
+                  <span className="rounded-full bg-white/20 px-2 py-0.5 font-mono text-[11px] font-extrabold text-white">
+                    {count}/{total}
+                  </span>
               </button>
             </div>
           </div>

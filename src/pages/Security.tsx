@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand, PageHeader } from "../components/ui";
 import {
   AlertIcon,
@@ -45,14 +46,19 @@ const PILLARS = [
 ];
 
 export default function Security() {
+  const breadcrumbs = [{ name: "Security & Trust", path: "/security" }];
+
   usePageMeta({
-    title: "Security & Trust — GTMSip",
+    title: "Security & Trust — Platform Architecture & Compliance | GTMSip",
     description:
-      "How GTMSip is built: row-level tenant isolation, encrypted tokens, webhook signature verification, role-based access and automatic Meta messaging-window and opt-out enforcement.",
+    "Inspect GTMSip's security architecture: row-level tenant isolation, encrypted tokens, HMAC webhook verification, and official Meta messaging-window compliance.",
+    canonicalUrl: "/security",
+    jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Security & Trust"
         title={

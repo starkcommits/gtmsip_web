@@ -1,46 +1,89 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GTMSip — AI-Driven Sales &amp; Social Platform</title>
-    <meta
-      name="description"
-      content="GTMSip is the AI-driven sales and social platform: Firecrawl lead scraping, Google plugins for scraping and storing data, Claude MCP and AI workflows — plus a shared WhatsApp & Instagram inbox, CRM pipelines and payment links."
-    />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0a14" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="GTMSip — AI-Driven Sales &amp; Social Platform" />
-    <meta
-      property="og:description"
-      content="Scrape leads with Firecrawl, store data with Google plugins, run AI workflows through Claude MCP — and close conversations in one workspace."
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png" />
-    <link rel="apple-touch-icon" href="/images/favicon-64.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      (function () {
-        try {
-          var t = localStorage.getItem("gtmsip-theme");
-          var dark =
-            t === "dark" ||
-            (!t && window.matchMedia("(prefers-color-scheme: dark)").matches);
-          if (dark) document.documentElement.classList.add("dark");
-        } catch (e) {}
-      })();
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GTMSip — AI Sales &amp; Marketing Automation Platform</title>
+  <meta name="description"
+    content="Automate sales, marketing, lead generation and customer engagement with GTMSip. AI workflows, Firecrawl lead scraping, Claude MCP, and a shared WhatsApp &amp; Instagram inbox built on official Meta business APIs." />
+  <link rel="canonical" href="https://gtmsip.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GTMSip" />
+  <meta property="og:url" content="https://gtmsip.com/" />
+  <meta property="og:title" content="GTMSip — AI Sales &amp; Marketing Automation Platform" />
+  <meta property="og:description"
+    content="Automate sales, marketing, lead generation and customer engagement with GTMSip. AI workflows, Firecrawl lead scraping, Claude MCP, and a shared WhatsApp &amp; Instagram inbox." />
+  <meta property="og:image" content="https://gtmsip.com/images/og-image.png" />
+  <meta property="og:image:alt" content="GTMSip — AI Sales &amp; Marketing Automation Platform" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GTMSip — AI Sales &amp; Marketing Automation Platform" />
+  <meta name="twitter:description"
+    content="Automate sales, marketing, lead generation and customer engagement with GTMSip. AI workflows, Firecrawl lead scraping, Claude MCP, and a shared WhatsApp &amp; Instagram inbox." />
+  <meta name="twitter:image" content="https://gtmsip.com/images/og-image.png" />
+  <meta name="twitter:image:alt" content="GTMSip — AI Sales &amp; Marketing Automation Platform" />
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0a14" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png" />
+  <link rel="apple-touch-icon" href="/images/favicon-64.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+    rel="stylesheet" />
+
+  <!-- Brand Structured Data -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://gtmsip.com/#organization",
+            "name": "GTMSip",
+            "url": "https://gtmsip.com",
+            "logo": "https://gtmsip.com/images/logo-256.png",
+            "description": "AI-driven sales and social automation platform connecting Firecrawl lead scraping, Claude MCP workflows, and shared WhatsApp & Instagram inboxes."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://gtmsip.com/#website",
+            "url": "https://gtmsip.com",
+            "name": "GTMSip",
+            "description": "AI sales & marketing automation platform for lead scraping, WhatsApp CRM, and Instagram social selling.",
+            "publisher": {
+              "@id": "https://gtmsip.com/#organization"
+            }
+          }
+        ]
+      }
     </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("gtmsip-theme");
+        var dark =
+          t === "dark" ||
+          (!t && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.classList.add("dark");
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

@@ -123,6 +123,12 @@ export const ChevronDownIcon = (p: IconProps) => (
   </svg>
 );
 
+export const ChevronRightIcon = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="m9 6 6 6-6 6" />
+  </svg>
+);
+
 export const MenuIcon = (p: IconProps) => (
   <svg {...base(p)}>
     <path d="M4 7h16M4 12h16M4 17h16" />

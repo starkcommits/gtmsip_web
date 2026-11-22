@@ -1,4 +1,5 @@
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand, PageHeader } from "../components/ui";
 import { WaitlistOnboardingForm } from "../components/forms/WaitlistOnboardingForm";
 import {
@@ -10,14 +11,19 @@ import {
 } from "../components/icons";
 
 export default function About() {
+  const breadcrumbs = [{ name: "About & Contact", path: "/about" }];
+
   usePageMeta({
-    title: "About & Contact — GTMSip",
+    title: "About GTMSip & Contact Us — The Unified AI Sales Workspace",
     description:
-      "Why GTMSip exists, how to reach the team, and an interactive form to book a demo of the WhatsApp and Instagram CRM, inbox and automation workspace.",
+    "Why GTMSip exists, our mission, how to reach our team, and how we build compliant sales automation across official Meta business APIs.",
+    canonicalUrl: "/about",
+    jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="About GTMSip"
         title={

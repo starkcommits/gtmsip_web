@@ -1,0 +1,14 @@
+# robots.txt for https://gtmsip.com/
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /*?*
+
+# Explicitly disallow any private or preview parameters
+Disallow: /*?preview=*
+Disallow: /*?token=*
+
+# Canonical Sitemap
+Sitemap: https://gtmsip.com/sitemap.xml

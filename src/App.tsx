@@ -4,6 +4,9 @@ import { SiteLayout } from "./layouts/SiteLayout";
 import HomePage from "./pages/HomePage";
 import FeaturesHub from "./pages/FeaturesHub";
 import FeatureDetail from "./pages/FeatureDetail";
+import SolutionDetail from "./pages/SolutionDetail";
+import BlogHub from "./pages/BlogHub";
+import BlogPost from "./pages/BlogPost";
 import HowItWorks from "./pages/HowItWorks";
 import UseCases from "./pages/UseCases";
 import Pricing from "./pages/Pricing";
@@ -27,6 +30,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/features" element={<FeaturesHub />} />
             <Route path="/features/:slug" element={<FeatureDetail />} />
+            <Route path="/solutions/:slug" element={<SolutionDetail />} />
+            <Route path="/blog" element={<BlogHub />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/use-cases" element={<UseCases />} />
             <Route path="/pricing" element={<Pricing />} />

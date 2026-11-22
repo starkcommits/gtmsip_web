@@ -26,22 +26,24 @@ const TITLE: TitleWord[] = [
 function AnimatedTitle() {
   return (
     <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-      {TITLE.map((word, wordIdx) => (
-        <span
-          key={word.text + wordIdx}
-          className="hero-word mr-3 inline-block overflow-hidden align-bottom last:mr-0 sm:mr-4"
-        >
-          <span
-            className={`hero-word-inner inline-block ${
-              word.accent
-                ? "font-serif font-normal italic text-brand-500 [text-shadow:0_0_28px_rgba(139,92,246,0.65)] dark:text-brand-400"
-                : ""
-            }`}
-          >
-            {word.text}
-          </span>
+          <span className="sr-only">Automate Your Sales, Marketing & Customer Engagement with AI</span>
+          <span aria-hidden="true">
+            {TITLE.map((word, wordIdx) => (
+              <span
+                key={word.text + wordIdx}
+                className="hero-word mr-3 inline-block overflow-hidden align-bottom last:mr-0 sm:mr-4"
+              >
+                <span
+                  className={`hero-word-inner inline-block ${word.accent
+                      ? "font-serif font-normal italic text-brand-500 [text-shadow:0_0_28px_rgba(139,92,246,0.65)] dark:text-brand-400"
+                      : ""
+                    }`}
+                >
+                  {word.text}
+                </span>
+              </span>
+        ))}
         </span>
-      ))}
     </h1>
   );
 }

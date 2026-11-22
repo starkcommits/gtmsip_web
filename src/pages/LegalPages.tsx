@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
-import { usePageMeta } from "../lib/seo";
+import { Link, useLocation } from "react-router-dom";
+import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { PageHeader } from "../components/ui";
 import { AlertIcon, CheckIcon } from "../components/icons";
 
@@ -15,13 +16,22 @@ function LegalLayout({
   updated?: string;
   children: ReactNode;
 }) {
+  const location = useLocation();
+  const breadcrumbs = [
+    { name: "Legal", path: "/legal/privacy" },
+    { name: title, path: location.pathname },
+  ];
+
   usePageMeta({
-    title: `${title} — GTMSip`,
+    title: `${title} — GTMSip Compliance & Legal`,
     description,
+    canonicalUrl: location.pathname,
+    jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader eyebrow="Legal & Compliance" title={title} description={description}>
         <span className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-50 px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-emerald-700 dark:border-emerald-400/40 dark:bg-emerald-400/10 dark:text-emerald-300">
           <CheckIcon size={14} />
@@ -338,7 +348,7 @@ export function DataDeletionPage() {
       <ol>
         <li>
           In the GTMSip app: <strong>Settings → Account → Delete account &amp;
-          data</strong>, then confirm.
+            data</strong>, then confirm.
         </li>
         <li>
           Or email <strong>support@gtmsip.com</strong> from the address registered

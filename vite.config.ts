@@ -76,4 +76,14 @@ function waitlistApiPlugin(): Plugin {
 
 export default defineConfig({
   plugins: [youwareVitePlugin(), react(), waitlistApiPlugin()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-motion': ['gsap', 'framer-motion', 'lenis'],
+        },
+      },
+    },
+  },
 });

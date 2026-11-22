@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand, PageHeader } from "../components/ui";
 import { openWaitlistModal } from "../lib/waitlist";
 import {
@@ -45,14 +46,34 @@ const STEPS = [
 ];
 
 export default function HowItWorks() {
+  const breadcrumbs = [{ name: "How it works", path: "/how-it-works" }];
+
   usePageMeta({
-    title: "How it works — GTMSip",
+    title: "How It Works — AI Sales & Social Platform in 3 Steps | GTMSip",
     description:
-      "Three steps to run AI-driven sales and social: connect your channels, shape automations and AI workflows with Firecrawl and Google plugins, and work as a team from one shared inbox.",
+    "Learn how GTMSip works: connect your official Meta channels, automate workflows with Firecrawl and Google plugins, and manage sales in a unified team inbox.",
+    canonicalUrl: "/how-it-works",
+    jsonLd: [
+      buildBreadcrumbsSchema(breadcrumbs),
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: "How to set up GTMSip for AI sales and social automation",
+        description:
+          "Three steps to connect official channels, automate workflows with AI, and work from a shared inbox.",
+        step: STEPS.map((s, idx) => ({
+          "@type": "HowToStep",
+          position: idx + 1,
+          name: s.title,
+          text: s.body,
+        })),
+      },
+    ],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="How it works"
         title={

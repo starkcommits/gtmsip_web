@@ -1,19 +1,26 @@
 import { Link } from "react-router-dom";
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
 import { FEATURES } from "../data/features";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { ComingSoon, CtaBand, PageHeader } from "../components/ui";
 import { ArrowRightIcon } from "../components/icons";
 import { openWaitlistModal } from "../lib/waitlist";
 
 export default function FeaturesHub() {
+  const breadcrumbs = [{ name: "Features", path: "/features" }];
+
   usePageMeta({
-    title: "Features — GTMSip AI sales & social platform",
+    title: "Features Hub — All 10 Modules | GTMSip AI Sales & Social Platform",
     description:
-      "Explore every GTMSip module: Firecrawl lead scraping, Google plugins, AI workflows and Claude MCP, shared inbox, broadcasts, comment-to-DM, pipelines with Razorpay, analytics, workspaces and API.",
+    "Explore every GTMSip module: Firecrawl lead scraping, Google plugins, AI workflows and Claude MCP, shared WhatsApp & Instagram inbox, broadcasts, comment-to-DM, pipelines with Razorpay, and workspaces.",
+    canonicalUrl: "/features",
+    jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
+
       <PageHeader
         eyebrow="Features hub"
         title={

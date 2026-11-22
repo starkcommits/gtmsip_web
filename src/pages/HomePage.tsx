@@ -1,4 +1,9 @@
-import { usePageMeta } from "../lib/seo";
+import {
+  usePageMeta,
+  ORGANIZATION_SCHEMA,
+  WEBSITE_SCHEMA,
+  buildFaqSchema,
+} from "../lib/seo";
 import { Hero, TrustStrip } from "../sections/Hero";
 import { FeaturePillars } from "../sections/FeaturePillars";
 import { CommentToDmWalkthrough } from "../sections/Walkthrough";
@@ -13,10 +18,13 @@ import { HOME_FAQ } from "../data/faq";
 
 export default function HomePage() {
   usePageMeta({
-    title: "GTMSip — AI-Driven Sales & Social Platform",
+    title: "AI Sales & Marketing Automation Platform | GTMSip",
     description:
-      "GTMSip is the AI-driven sales and social platform: Firecrawl lead scraping, Google plugins for scraping and storing data, Claude MCP and AI workflows — plus a shared WhatsApp & Instagram inbox, CRM pipelines and Razorpay payment links.",
+    "Automate sales, marketing, lead generation and customer engagement with GTMSip. AI workflows, Firecrawl lead scraping, Claude MCP, and shared WhatsApp & Instagram inbox.",
+    canonicalUrl: "/",
     jsonLd: [
+      ORGANIZATION_SCHEMA,
+      WEBSITE_SCHEMA,
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -24,14 +32,12 @@ export default function HomePage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description:
-          "AI-driven sales and social platform with Firecrawl lead scraping, Google plugins for data scraping and storage, Claude MCP integration, AI workflows, and a shared WhatsApp and Instagram inbox built on official Meta business APIs.",
+        "AI sales and marketing automation platform with Firecrawl lead scraping, Google plugins for data scraping and storage, Claude MCP integration, AI workflows, and a shared WhatsApp and Instagram inbox built on official Meta business APIs.",
         offers: {
           "@type": "Offer",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            priceCurrency: "INR",
-            description: "Pricing pending — [Price TBD]",
-          },
+          price: "0",
+          priceCurrency: "USD",
+          description: "Early access waitlist",
         },
         featureList: [
           "Firecrawl-powered lead scraping",
@@ -45,15 +51,7 @@ export default function HomePage() {
           "Webhooks, REST API and MCP endpoint",
         ],
       },
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: HOME_FAQ.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
-        })),
-      },
+      buildFaqSchema(HOME_FAQ),
     ],
   });
 

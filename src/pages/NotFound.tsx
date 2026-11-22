@@ -4,8 +4,9 @@ import { ArrowRightIcon } from "../components/icons";
 
 export default function NotFound() {
   usePageMeta({
-    title: "Page not found — GTMSip",
+    title: "404: Page Not Found — GTMSip",
     description: "The page you're looking for doesn't exist on the GTMSip site.",
+    noindex: true,
   });
 
   return (

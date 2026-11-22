@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema, buildFaqSchema } from "../lib/seo";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand, PageHeader } from "../components/ui";
 import { Accordion } from "../components/Accordion";
 import { PRICING_FAQ } from "../data/faq";
@@ -77,23 +78,22 @@ function Cell({ value }: { value: boolean | string }) {
 }
 
 export default function Pricing() {
+  const breadcrumbs = [{ name: "Pricing", path: "/pricing" }];
+
   usePageMeta({
-    title: "Pricing — GTMSip (placeholder pricing)",
+    title: "Pricing Plans — Starter, Growth & Agency Tiers | GTMSip",
     description:
-      "Three GTMSip tiers — Starter, Growth and Agency — with honest placeholder pricing ([Price TBD]) and a full feature comparison. Talk to us for confirmed pricing.",
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: PRICING_FAQ.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: { "@type": "Answer", text: item.answer },
-      })),
-    },
+    "Compare GTMSip tiers — Starter, Growth, and Agency. Transparent feature breakdown including WhatsApp CRM, AI workflows, broadcasts, and deal pipelines.",
+    canonicalUrl: "/pricing",
+    jsonLd: [
+      buildBreadcrumbsSchema(breadcrumbs),
+      buildFaqSchema(PRICING_FAQ),
+    ],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Pricing"
         title={
@@ -136,11 +136,10 @@ export default function Pricing() {
             {TIERS.map((tier) => (
               <article
                 key={tier.id}
-                className={`card relative flex flex-col p-7 ${
-                  tier.highlight
+                className={`card relative flex flex-col p-7 ${tier.highlight
                     ? "border-brand-500 shadow-[0_24px_60px_-30px_rgba(124,58,237,0.55)] dark:border-brand-400/60"
                     : ""
-                }`}
+                  }`}
               >
                 {tier.highlight && (
                   <span className="absolute -top-3 left-7 rounded-full bg-brand-600 px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">

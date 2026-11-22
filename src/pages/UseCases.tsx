@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { usePageMeta } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand, PageHeader } from "../components/ui";
 import { openWaitlistModal } from "../lib/waitlist";
 import {
@@ -90,14 +91,19 @@ const USE_CASES = [
 ];
 
 export default function UseCases() {
+  const breadcrumbs = [{ name: "Use cases", path: "/use-cases" }];
+
   usePageMeta({
-    title: "Use cases — GTMSip for lead gen, agencies, D2C, education & services",
+    title: "Use Cases — Lead Gen, Agencies, D2C, Education & Services | GTMSip",
     description:
-      "See how sales teams, agencies, D2C brands, education businesses and service teams use Firecrawl lead scraping, AI workflows and WhatsApp & Instagram conversations in GTMSip.",
+    "Explore how sales teams, agencies, D2C e-commerce, and education brands scale with GTMSip's AI lead scraping, WhatsApp CRM, and Instagram comment automation.",
+    canonicalUrl: "/use-cases",
+    jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });
 
   return (
     <>
+      <Breadcrumbs items={breadcrumbs} />
       <PageHeader
         eyebrow="Use cases"
         title={
