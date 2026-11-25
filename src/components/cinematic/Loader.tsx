@@ -2,18 +2,25 @@ import { useEffect, useState } from "react";
 import { prefersReducedMotion } from "../../lib/motion";
 
 /**
- * Lightweight intro loader: an SVG logo stroke-draw + wordmark,
- * ~1.2s total, then it unmounts. Never blocks content beyond that
- * and is skipped entirely for reduced-motion users.
+ * Lightweight intro loader: an SVG logo stroke-draw + wordmark.
+ * Automatically bypassed on mobile viewports (< 768px) and for users with
+ * prefers-reduced-motion to guarantee instantaneous First Contentful Paint (FCP)
+ * and Largest Contentful Paint (LCP) under Google's 2.5s bar.
  */
 export function Loader() {
-  const [done, setDone] = useState(() => prefersReducedMotion());
+  const [done, setDone] = useState(() => {
+    if (typeof window !== "undefined") {
+      // Skip on mobile for instant LCP performance
+      if (window.innerWidth < 768) return true;
+    }
+    return prefersReducedMotion();
+  });
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
     if (done) return;
-    const t1 = window.setTimeout(() => setLeaving(true), 1050);
-    const t2 = window.setTimeout(() => setDone(true), 1450);
+    const t1 = window.setTimeout(() => setLeaving(true), 400);
+    const t2 = window.setTimeout(() => setDone(true), 650);
     return () => {
       window.clearTimeout(t1);
       window.clearTimeout(t2);
@@ -25,7 +32,7 @@ export function Loader() {
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[200] flex items-center justify-center bg-[#07060F] transition-opacity duration-400 ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center bg-[#07060F] transition-opacity duration-300 ${
         leaving ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >

@@ -60,30 +60,40 @@ export function Hero() {
   useLayoutEffect(() => {
     if (prefersReducedMotion()) return;
     const ctx = gsap.context(() => {
-      // Intro: blur-to-sharp word reveal with mask wipe
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+      const introDelay = isMobile ? 0 : 0.15;
+
+      // Intro: immediate on mobile for instant LCP < 1.5s, smooth reveal on desktop
       gsap.fromTo(
         ".hero-word-inner",
-        { yPercent: 110, filter: "blur(14px)", opacity: 0 },
+        {
+          yPercent: isMobile ? 0 : 70,
+          filter: isMobile ? "none" : "blur(8px)",
+          opacity: isMobile ? 1 : 0,
+        },
         {
           yPercent: 0,
           filter: "blur(0px)",
           opacity: 1,
-          duration: 0.9,
+          duration: isMobile ? 0.3 : 0.7,
           ease: EASE.out,
-          stagger: 0.06,
-          delay: 1.15, // after loader
+          stagger: isMobile ? 0 : 0.04,
+          delay: introDelay,
         },
       );
       gsap.fromTo(
         ".hero-stagger",
-        { y: 26, opacity: 0 },
+        {
+          y: isMobile ? 0 : 18,
+          opacity: isMobile ? 1 : 0,
+        },
         {
           y: 0,
           opacity: 1,
-          duration: 0.8,
+          duration: isMobile ? 0.3 : 0.6,
           ease: EASE.out,
-          stagger: 0.09,
-          delay: 1.55,
+          stagger: isMobile ? 0 : 0.05,
+          delay: introDelay + (isMobile ? 0 : 0.08),
         },
       );
 

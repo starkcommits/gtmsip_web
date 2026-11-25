@@ -20,7 +20,7 @@ export default function HomePage() {
   usePageMeta({
     title: "AI Sales & Marketing Automation Platform | GTMSip",
     description:
-    "Automate sales, marketing, lead generation and customer engagement with GTMSip. AI workflows, Firecrawl lead scraping, Claude MCP, and shared WhatsApp & Instagram inbox.",
+      "Automate sales, marketing, lead generation and customer engagement with GTMSip. AI sales automation software, B2B lead generation software, and WhatsApp marketing automation with Claude MCP and official Meta business APIs.",
     canonicalUrl: "/",
     jsonLd: [
       ORGANIZATION_SCHEMA,
@@ -32,7 +32,7 @@ export default function HomePage() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         description:
-        "AI sales and marketing automation platform with Firecrawl lead scraping, Google plugins for data scraping and storage, Claude MCP integration, AI workflows, and a shared WhatsApp and Instagram inbox built on official Meta business APIs.",
+          "AI sales automation software and marketing automation platform with Firecrawl lead scraping, Google plugins for data scraping and storage, Claude MCP integration, AI workflows, and a shared WhatsApp and Instagram inbox built on official Meta business APIs.",
         offers: {
           "@type": "Offer",
           price: "0",
@@ -40,15 +40,16 @@ export default function HomePage() {
           description: "Early access waitlist",
         },
         featureList: [
-          "Firecrawl-powered lead scraping",
-          "Google plugins for scraping and storing data",
-          "Claude MCP endpoint and AI workflows",
-          "Shared WhatsApp and Instagram inbox",
-          "Instagram comment-to-DM automation",
-          "Broadcasts and drip flows",
-          "Deal pipelines with Razorpay payment links",
+          "AI sales automation software with Claude MCP workflows",
+          "B2B lead generation software powered by Firecrawl",
+          "WhatsApp marketing automation software with official Meta APIs",
+          "Google plugins for scraping and storing data in Sheets and Drive",
+          "Shared WhatsApp and Instagram team inbox with CRM tags",
+          "Instagram comment-to-DM lead automation",
+          "Broadcasts and automated multi-step drip flows",
+          "Deal pipelines with in-chat Razorpay payment links",
           "Multi-brand workspaces and role-based access",
-          "Webhooks, REST API and MCP endpoint",
+          "Signed webhooks, REST API and Claude MCP endpoint",
         ],
       },
       buildFaqSchema(HOME_FAQ),

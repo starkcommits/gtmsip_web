@@ -20,22 +20,22 @@ interface Pillar {
 const PILLARS: Pillar[] = [
   {
     id: "ai",
-    label: "AI & Data",
+    label: "Sales Automation",
     preview: "integrations",
-    title: "Scrape, store and act — with AI",
+    title: "AI Sales Automation Software & Claude MCP",
     description:
-      "Firecrawl scrapes lead lists, Google plugins store the data where your team already works, and Claude MCP lets your AI assistants trigger the rest — all wired into one workspace.",
+      "Firecrawl scrapes B2B lead lists, Google plugins store contacts in Sheets, and Claude MCP powers AI sales automation software across your pipeline.",
     bullets: [
-      "Firecrawl-powered lead scraping into your pipeline",
-      "Google Sheets & Drive plugins for scraping and storage",
-      "Claude MCP endpoint for approved AI assistants",
-      "AI workflows that chain scrape → enrich → follow up",
+      "AI sales automation software powered by Claude MCP",
+      "B2B lead generation software with Firecrawl extraction",
+      "Google Sheets & Drive plugins for real-time lead sync",
+      "AI workflow chains for scoring, enrichment & routing",
     ],
-    href: "/features/ai-workflows-mcp",
+    href: "/solutions/ai-sales-automation",
   },
   {
     id: "inbox",
-    label: "Unified Inbox",
+    label: "WhatsApp CRM",
     preview: "inbox",
     title: "One queue for WhatsApp and Instagram",
     description:
@@ -46,22 +46,22 @@ const PILLARS: Pillar[] = [
       "24-hour window countdown per conversation",
       "Canned replies, internal notes and @mentions",
     ],
-    href: "/features/whatsapp-crm-inbox",
+    href: "/solutions/whatsapp-marketing",
   },
   {
     id: "automations",
-    label: "Automations & Comment-to-DM",
+    label: "Marketing Automation",
     preview: "commentDm",
-    title: "Comments become conversations",
+    title: "Marketing Automation Software for Social & Chat",
     description:
-      "Keyword-triggered replies on Reels and posts continue in the DM, while drip flows follow up until a human takes over — all inside Meta's rules.",
+      "Keyword-triggered replies on Reels and posts continue in the DM, while drip marketing automation flows follow up until a human takes over.",
     bullets: [
-      "One private reply per comment, automated",
-      "Public reply → private DM → CRM lead",
+      "Marketing automation software for WhatsApp & Instagram",
+      "Public reply → private DM → automated CRM lead",
       "Multi-step drip flows with wait & branch steps",
-      "Opt-outs excluded automatically",
+      "100% compliant with official Meta Business APIs",
     ],
-    href: "/features/instagram-comment-to-dm",
+    href: "/solutions/instagram-automation",
   },
   {
     id: "crm",

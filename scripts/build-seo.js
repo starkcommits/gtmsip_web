@@ -353,7 +353,34 @@ function run() {
     // Read dist/index.html as template
     const templatePath = path.join(distDir, 'index.html');
     if (fs.existsSync(templatePath)) {
-      const template = fs.readFileSync(templatePath, 'utf-8');
+      let template = fs.readFileSync(templatePath, 'utf-8');
+
+      const semanticFallback = `<div id="root">
+    <div style="opacity:0;position:absolute;pointer-events:none;z-index:-1" aria-hidden="false">
+      <h1>Automate Your Sales, Marketing &amp; Customer Engagement with AI</h1>
+      <p>GTMSip is the AI-driven sales and marketing automation platform: Firecrawl lead scraping, Google plugins for data storage, Claude MCP workflows, and shared WhatsApp &amp; Instagram inbox to close deals.</p>
+      <nav aria-label="Solutions and Key Sections">
+        <ul>
+          <li><a href="/solutions/whatsapp-marketing">WhatsApp Marketing Software &amp; Automation</a></li>
+          <li><a href="/solutions/ai-sales-automation">AI Sales Automation Software &amp; Claude MCP</a></li>
+          <li><a href="/solutions/lead-generation-software">B2B Lead Generation Software &amp; Scraping</a></li>
+          <li><a href="/solutions/instagram-automation">Instagram Comment to DM Automation</a></li>
+          <li><a href="/features">Features Hub (All 10 Modules)</a></li>
+          <li><a href="/how-it-works">How It Works</a></li>
+          <li><a href="/use-cases">Use Cases</a></li>
+          <li><a href="/pricing">Pricing Plans</a></li>
+          <li><a href="/security">Security &amp; Compliance</a></li>
+          <li><a href="/about">About &amp; Contact</a></li>
+          <li><a href="/blog">Blog &amp; Playbooks</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>`;
+
+      // Update dist/index.html with semantic H1 and crawlable links
+      let rootHtml = template.replace(/<div id="root"><\/div>/i, semanticFallback);
+      fs.writeFileSync(templatePath, rootHtml, 'utf-8');
+      console.log('✓ Injected semantic H1 and crawlable navigation into dist/index.html');
 
       for (const route of ROUTES) {
         if (route.path === '/') continue;
@@ -406,9 +433,25 @@ function run() {
           `<meta name="twitter:description" content="${route.description}" />`,
         );
 
+        // Inject page-specific semantic H1 and links
+        const pageFallback = `<div id="root">
+    <div style="opacity:0;position:absolute;pointer-events:none;z-index:-1" aria-hidden="false">
+      <h1>${route.title}</h1>
+      <p>${route.description}</p>
+      <nav aria-label="Main Navigation">
+        <a href="/">Home</a>
+        <a href="/solutions/whatsapp-marketing">WhatsApp Marketing</a>
+        <a href="/solutions/ai-sales-automation">Sales Automation</a>
+        <a href="/solutions/lead-generation-software">Lead Generation</a>
+        <a href="/blog">Blog</a>
+      </nav>
+    </div>
+  </div>`;
+        html = html.replace(/<div id="root"><\/div>/i, pageFallback);
+
         fs.writeFileSync(path.join(targetDir, 'index.html'), html, 'utf-8');
       }
-      console.log(`✓ Prerendered static HTML with custom metadata for ${ROUTES.length - 1} subroutes in dist/`);
+      console.log(`✓ Prerendered static HTML with custom metadata and H1 for ${ROUTES.length - 1} subroutes in dist/`);
     }
   }
 }
