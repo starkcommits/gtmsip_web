@@ -137,7 +137,7 @@ export function WaitlistOnboardingForm({
   const progressPercent = Math.min(100, Math.round((count / total) * 100));
 
   return (
-    <div className={`card overflow-hidden p-6 sm:p-8 ${compact ? "" : "max-w-xl mx-auto"}`}>
+    <div className={`card overflow-hidden p-5 sm:p-8 ${compact ? "" : "max-w-xl mx-auto"}`}>
       {/* Special Offer Header */}
       <div className="mb-6 rounded-2xl border border-brand-500/30 bg-gradient-to-r from-brand-500/10 via-purple-500/10 to-transparent p-4 dark:border-brand-400/25 dark:bg-white/[0.04]">
         <div className="flex items-center justify-between gap-2">

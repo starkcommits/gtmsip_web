@@ -255,8 +255,8 @@ export function Navbar() {
     >
       <nav
         aria-label="Main"
-        className={`container-x flex h-16 items-center justify-between gap-4 transition-all duration-300 ${scrolled
-            ? "rounded-2xl border border-stone-200/70 bg-white/70 px-4 shadow-[0_10px_40px_-24px_rgba(15,23,42,0.4)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0B0A1A]/70"
+        className={`container-x flex h-16 items-center justify-between gap-2 sm:gap-4 transition-all duration-300 ${scrolled
+            ? "rounded-2xl border border-stone-200/70 bg-white/70 px-3 sm:px-4 shadow-[0_10px_40px_-24px_rgba(15,23,42,0.4)] backdrop-blur-xl dark:border-white/10 dark:bg-[#0B0A1A]/70"
             : "rounded-2xl border border-transparent px-0"
           }`}
       >
@@ -313,7 +313,7 @@ export function Navbar() {
           id="mobile-menu"
           className="border-t border-stone-200 bg-white lg:hidden dark:border-white/10 dark:bg-[#0b0a14]"
         >
-          <div className="container-x max-h-[70vh] overflow-y-auto py-4">
+          <div className="container-x max-h-[75vh] overflow-y-auto overscroll-contain py-4">
             <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
               Solutions
             </p>

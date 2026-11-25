@@ -35,7 +35,7 @@ export function WaitlistModal() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-3xl bg-white text-left align-middle shadow-2xl transition-all dark:bg-[#100E20] dark:border dark:border-white/10">
+              <Dialog.Panel className="w-full max-w-xl max-h-[92vh] overflow-y-auto transform rounded-3xl bg-white text-left align-middle shadow-2xl transition-all dark:bg-[#100E20] dark:border dark:border-white/10">
                 <div className="relative p-6 sm:p-8">
                   <button
                     type="button"

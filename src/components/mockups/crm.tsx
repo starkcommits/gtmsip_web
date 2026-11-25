@@ -289,7 +289,7 @@ export function PipelineMockup({ className = "" }: { className?: string }) {
 
   return (
     <MockFrame title="app.gtsip.com / pipeline" className={className}>
-      <div className="grid grid-cols-2 gap-2.5 overflow-x-auto lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-2.5 overflow-x-auto sm:grid-cols-2 lg:grid-cols-4">
         {columns.map((col) => (
           <div
             key={col.stage}
@@ -368,7 +368,7 @@ export function AnalyticsMockup({ className = "" }: { className?: string }) {
 
   return (
     <MockFrame title="app.gtsip.com / analytics" className={className}>
-      <div className="grid grid-cols-3 gap-2.5">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-2.5">
         {[
           { label: "Avg. first response", value: "1m 12s" },
           { label: "Resolved today", value: "27" },
@@ -407,8 +407,8 @@ export function AnalyticsMockup({ className = "" }: { className?: string }) {
         </div>
       </div>
 
-      <div className="mt-3 overflow-hidden rounded-xl border border-stone-200 dark:border-white/10">
-        <table className="w-full text-left text-[10.5px]">
+      <div className="mt-3 overflow-x-auto rounded-xl border border-stone-200 dark:border-white/10">
+        <table className="w-full min-w-[340px] text-left text-[10.5px]">
           <caption className="sr-only">Demo Meta ads attribution table</caption>
           <thead className="bg-stone-50 text-stone-500 dark:text-stone-400 dark:bg-white/[0.04] dark:text-stone-500">
             <tr>

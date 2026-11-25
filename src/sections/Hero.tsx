@@ -25,13 +25,13 @@ const TITLE: TitleWord[] = [
 
 function AnimatedTitle() {
   return (
-    <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+    <h1 className="text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
           <span className="sr-only">Automate Your Sales, Marketing & Customer Engagement with AI</span>
           <span aria-hidden="true">
             {TITLE.map((word, wordIdx) => (
               <span
                 key={word.text + wordIdx}
-                className="hero-word mr-3 inline-block overflow-hidden align-bottom last:mr-0 sm:mr-4"
+                className="hero-word mr-2.5 inline-block overflow-hidden align-bottom last:mr-0 sm:mr-4"
               >
                 <span
                   className={`hero-word-inner inline-block ${word.accent
@@ -210,27 +210,27 @@ export function Hero() {
           </p>
 
           {/* Special Offer & Spots Tracker Badge */}
-          <div className="hero-stagger mt-6 flex justify-center">
+          <div className="hero-stagger mt-6 flex justify-center px-2">
             <button
               type="button"
               onClick={openWaitlistModal}
-              className="group inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-brand-500/30 bg-brand-50/90 px-4 py-1.5 text-xs font-bold text-brand-800 shadow-sm transition hover:border-brand-500 hover:bg-brand-100/90 dark:border-brand-400/30 dark:bg-brand-500/10 dark:text-brand-300 dark:hover:bg-brand-500/20"
+              className="group inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-2xl border border-brand-500/30 bg-brand-50/90 px-3.5 py-1.5 text-center text-[11px] font-bold text-brand-800 shadow-sm transition hover:border-brand-500 hover:bg-brand-100/90 sm:rounded-full sm:px-4 sm:text-xs dark:border-brand-400/30 dark:bg-brand-500/10 dark:text-brand-300 dark:hover:bg-brand-500/20"
             >
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="flex h-2 w-2 shrink-0 rounded-full bg-emerald-500 animate-pulse" />
               <span>Special Offer: First 100 users get 50% lifetime discount</span>
-              <span className="rounded-full bg-brand-600 px-2 py-0.5 font-mono text-[11px] font-extrabold text-white">
+              <span className="shrink-0 rounded-full bg-brand-600 px-2 py-0.5 font-mono text-[10px] font-extrabold text-white sm:text-[11px]">
                 {count}/{total} spots
               </span>
             </button>
           </div>
 
           {/* CTAs */}
-          <div className="hero-stagger mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="hero-stagger mt-6 flex w-full max-w-sm flex-col items-stretch justify-center gap-3 sm:max-w-none sm:flex-row sm:items-center">
             <button
               type="button"
               onClick={openWaitlistModal}
               data-magnetic
-              className="group btn-primary relative overflow-hidden px-8 py-3.5 text-base"
+              className="group btn-primary relative w-full overflow-hidden px-8 py-3.5 text-base sm:w-auto"
             >
               <span className="btn-shimmer" aria-hidden="true" />
               Join the waitlist
@@ -239,7 +239,7 @@ export function Hero() {
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </button>
-            <Link to="/how-it-works" data-magnetic className="btn-secondary px-7 py-3.5">
+            <Link to="/how-it-works" data-magnetic className="btn-secondary w-full px-7 py-3.5 text-center sm:w-auto">
               See how it works
             </Link>
           </div>
