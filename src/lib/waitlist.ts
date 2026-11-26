@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { trackEvent } from "./analytics";
 
 export interface WaitlistEntry {
   id?: string;
@@ -60,6 +61,12 @@ export async function saveWaitlistEntry(data: {
   } catch {
     /* storage unavailable */
   }
+
+  // Track lead conversion in Google Analytics & Tag Manager
+  trackEvent("generate_lead", {
+    spot_number: nextSpot,
+    organization: data.organization,
+  });
 
   // 2. Persist to server JSON store
   try {
@@ -158,6 +165,7 @@ export function exportWaitlistCSV() {
 /** Global Modal State Dispatcher */
 export function openWaitlistModal() {
   if (typeof window !== "undefined") {
+    trackEvent("click_waitlist_button");
     window.dispatchEvent(new CustomEvent("gtmsip-open-waitlist-modal"));
   }
 }

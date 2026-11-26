@@ -10,12 +10,15 @@ import { ScrollChrome } from "../components/cinematic/ScrollChrome";
 import { MicroInteractions } from "../components/cinematic/MicroInteractions";
 import { scrollToY, useSmoothScroll } from "../lib/lenis";
 import { ScrollTrigger, prefersReducedMotion } from "../lib/motion";
+import { trackPageView } from "../lib/analytics";
 
-/** Scrolls to top on route change; honours #hash targets. */
+/** Scrolls to top on route change; honours #hash targets; tracks SPA pageviews. */
 function ScrollManager() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    trackPageView(pathname);
+
     if (hash) {
       const id = hash.slice(1);
       const timer = window.setTimeout(() => {
