@@ -181,6 +181,48 @@ export default function FeatureDetail() {
                         </section>
       )}
 
+      {/* Related Solutions & Strategic Guides (Topic Cluster) */}
+      {feature.relatedLinks && feature.relatedLinks.length > 0 && (
+        <section className="section border-b border-stone-200 dark:border-white/10" aria-labelledby="related-links-title">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                Connected Solutions & Playbooks
+              </span>
+              <h2 id="related-links-title" className="mt-2 text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
+                Explore related workflows
+              </h2>
+              <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+                See how {feature.title.toLowerCase()} integrates into broader business automation architectures.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              {feature.relatedLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="group rounded-2xl border border-stone-200 bg-white p-6 transition-all hover:border-brand-500/50 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-brand-400/40"
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-base font-extrabold text-stone-900 group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400 transition-colors">
+                      {link.title}
+                    </h3>
+                    <ArrowRightIcon
+                      size={16}
+                      className="text-stone-400 transition-transform group-hover:translate-x-1 group-hover:text-brand-500"
+                    />
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+                    {link.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
                         {/* Next feature */}
                         <section className="section" aria-label="Next feature">
                           <div className="container-x flex flex-wrap items-center justify-between gap-4">
