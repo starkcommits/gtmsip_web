@@ -4,6 +4,7 @@ import { ArrowRightIcon, CheckIcon, ZapIcon } from "../components/icons";
 import { ScrambleLabel } from "../components/cinematic/ScrambleLabel";
 import { gsap, ScrollTrigger, EASE, prefersReducedMotion } from "../lib/motion";
 import { openWaitlistModal, useWaitlistCount } from "../lib/waitlist";
+import { useTheme } from "../lib/theme";
 
 /* ------------------------------------------------------------------ */
 /* Headline: word-by-word blur-to-sharp reveal + mask wipe             */
@@ -26,24 +27,25 @@ const TITLE: TitleWord[] = [
 function AnimatedTitle() {
   return (
     <h1 className="text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-          <span className="sr-only">Automate Your Sales, Marketing & Customer Engagement with AI</span>
-          <span aria-hidden="true">
-            {TITLE.map((word, wordIdx) => (
-              <span
-                key={word.text + wordIdx}
-                className="hero-word mr-2.5 inline-block overflow-hidden align-bottom last:mr-0 sm:mr-4"
-              >
-                <span
-                  className={`hero-word-inner inline-block ${word.accent
-                      ? "font-serif font-normal italic text-brand-500 [text-shadow:0_0_28px_rgba(139,92,246,0.65)] dark:text-brand-400"
-                      : ""
-                    }`}
-                >
-                  {word.text}
-                </span>
-              </span>
+      <span className="sr-only">Find leads with AI. Close deals in one workspace.</span>
+      <span aria-hidden="true">
+        {TITLE.map((word, wordIdx) => (
+          <span
+            key={word.text + wordIdx}
+            className="hero-word mr-2.5 inline-block overflow-hidden align-bottom last:mr-0 sm:mr-4"
+          >
+            <span
+              className={`hero-word-inner inline-block ${
+                word.accent
+                  ? "font-serif font-normal italic text-brand-500 [text-shadow:0_0_28px_rgba(139,92,246,0.65)] dark:text-brand-400"
+                  : ""
+              }`}
+            >
+              {word.text}
+            </span>
+          </span>
         ))}
-        </span>
+      </span>
     </h1>
   );
 }
@@ -54,6 +56,7 @@ function AnimatedTitle() {
 
 export function Hero() {
   const { count, total, remaining } = useWaitlistCount();
+  const { resolved } = useTheme();
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -173,18 +176,13 @@ export function Hero() {
             />
             <div className="relative flex h-[88px] w-[88px] items-center justify-center rounded-[22px] border border-stone-200/80 bg-white/95 p-3.5 shadow-[0_18px_45px_-18px_rgba(124,58,237,0.25)] ring-1 ring-stone-900/5 backdrop-blur-sm dark:border-white/15 dark:bg-[#121024]/90 dark:shadow-[0_18px_45px_-18px_rgba(46,16,101,0.65)] dark:ring-white/15">
               <img
-                src="/images/symbol-light-2x.png"
-                alt="GTMSip"
+                src={resolved === "dark" ? "/images/symbol-dark-2x.png" : "/images/symbol-light-2x.png"}
+                alt="GTMSip Platform Symbol"
                 width={72}
                 height={72}
-                className="h-full w-full object-contain dark:hidden"
-              />
-              <img
-                src="/images/symbol-dark-2x.png"
-                alt="GTMSip"
-                width={72}
-                height={72}
-                className="hidden h-full w-full object-contain dark:block"
+                fetchPriority="high"
+                decoding="async"
+                className="h-full w-full object-contain"
               />
             </div>
           </div>

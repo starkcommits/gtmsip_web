@@ -63,8 +63,9 @@ export function NetworkCanvas() {
     if (reduceMotionQuery.matches) return;
 
     const mobile = window.matchMedia("(max-width: 767px)").matches;
-    const NODE_COUNT = mobile ? 34 : 78;
-    const LINK_DIST = mobile ? 110 : 130;
+    // Slices quadratic pairwise distance calculation loop from 561 to 120 checks on mobile
+    const NODE_COUNT = mobile ? 16 : 68;
+    const LINK_DIST = mobile ? 85 : 125;
 
     let width = 0;
     let height = 0;

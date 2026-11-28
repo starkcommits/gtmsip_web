@@ -4,9 +4,8 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /dashboard/
-Disallow: /*?*
 
-# Explicitly disallow any private or preview parameters
+# Block private preview and authentication token parameters
 Disallow: /*?preview=*
 Disallow: /*?token=*
 

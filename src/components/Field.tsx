@@ -110,11 +110,11 @@ export function Field({
  * assistive tech. A filled value indicates a bot submission.
  */
 export function Honeypot({
-  name,
+  name = "honeypot",
   value,
   onChange,
 }: {
-  name: string;
+  name?: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }) {

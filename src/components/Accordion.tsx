@@ -2,7 +2,7 @@ import { useId, useState, type ReactNode } from "react";
 import { ChevronDownIcon } from "../components/icons";
 
 export interface AccordionItem {
-  id: string;
+  id?: string;
   question: string;
   answer: ReactNode;
 }
@@ -19,20 +19,21 @@ export function Accordion({
   items: AccordionItem[];
   defaultOpenId?: string;
 }) {
-  const [openId, setOpenId] = useState<string | null>(
-    defaultOpenId ?? items[0]?.id ?? null,
-  );
   const baseId = useId();
+  const [openId, setOpenId] = useState<string | null>(
+    defaultOpenId ?? items[0]?.id ?? `${baseId}-0`,
+  );
 
   return (
     <div className="divide-y divide-stone-200 overflow-hidden rounded-2xl border border-stone-200 bg-white dark:divide-white/10 dark:border-white/10 dark:bg-[#151228]">
-      {items.map((item) => {
-        const open = openId === item.id;
-        const buttonId = `${baseId}-${item.id}-btn`;
-        const panelId = `${baseId}-${item.id}-panel`;
+      {items.map((item, index) => {
+        const itemId = item.id ?? `${baseId}-${index}`;
+        const open = openId === itemId;
+        const buttonId = `${baseId}-${itemId}-btn`;
+        const panelId = `${baseId}-${itemId}-panel`;
         return (
           <div
-            key={item.id}
+            key={itemId}
             className={`acc-item ${open ? "acc-item-open bg-brand-50/40 dark:bg-brand-400/[0.06]" : ""}`}
           >
             <h3>
@@ -41,7 +42,7 @@ export function Accordion({
                 id={buttonId}
                 aria-expanded={open}
                 aria-controls={panelId}
-                onClick={() => setOpenId(open ? null : item.id)}
+                onClick={() => setOpenId(open ? null : itemId)}
                 className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-stone-50 sm:px-6 sm:py-5 dark:hover:bg-white/[0.04]"
               >
                 <span className="text-sm font-bold text-stone-900 sm:text-base dark:text-white">
