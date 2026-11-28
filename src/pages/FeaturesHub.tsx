@@ -73,6 +73,96 @@ export default function FeaturesHub() {
         </div>
       </section>
 
+      {/* Platform Comparison Matrix */}
+      <section className="section border-t border-stone-200 dark:border-white/10" aria-labelledby="comparison-title">
+        <div className="container-x">
+          <div className="max-w-3xl">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Architecture Comparison
+            </span>
+            <h2 id="comparison-title" className="mt-2 text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
+              Why fast-growing sales teams switch to GTMSip
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400 sm:text-base">
+              See how GTMSip’s unified AI sales platform replaces brittle scripts, unverified browser bots, and chaotic shared phone numbers.
+            </p>
+          </div>
+
+          <div className="mt-8 overflow-x-auto rounded-2xl border border-stone-200 bg-white dark:border-white/10 dark:bg-white/[0.02]">
+            <table className="w-full min-w-[700px] text-left">
+              <caption className="sr-only">
+                Comparison between traditional disconnected sales tools and GTMSip unified AI platform
+              </caption>
+              <thead className="border-b border-stone-200 bg-stone-50 dark:border-white/10 dark:bg-white/[0.04]">
+                <tr>
+                  <th scope="col" className="w-1/4 px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+                    Dimension
+                  </th>
+                  <th scope="col" className="w-[37.5%] px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+                    Traditional / Disconnected Tools
+                  </th>
+                  <th scope="col" className="w-[37.5%] px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                    GTMSip Unified Platform
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-stone-200 text-sm dark:divide-white/10">
+                {[
+                  {
+                    capability: "WhatsApp Compliance & Stability",
+                    legacy: "Unofficial QR code web scrapers; high risk of permanent Meta number bans and message delays",
+                    gtmsip: "Direct Meta Cloud API integration; 100% compliant with approved marketing templates and zero ban risk",
+                  },
+                  {
+                    capability: "Team Collaboration & Routing",
+                    legacy: "Single mobile phone passed between reps or disorganized WhatsApp Web logins with collision",
+                    gtmsip: "Centralized multi-agent shared inbox with round-robin auto-assignment and real-time collision detection",
+                  },
+                  {
+                    capability: "AI Workflows & Lead Context",
+                    legacy: "Isolated ChatGPT copy-pasting or rigid rule-based bots that lack customer conversation history",
+                    gtmsip: "Claude Model Context Protocol (MCP) server with real-time deal stage, contact note, and order context",
+                  },
+                  {
+                    capability: "Lead Ingestion & Storage",
+                    legacy: "Manual CSV exports and brittle scraping scripts that require hours of cleaning before outreach",
+                    gtmsip: "Automated Firecrawl web scraping synced bi-directionally to Google Sheets, Drive, and CRM pipelines",
+                  },
+                  {
+                    capability: "In-Conversation Payment Settlement",
+                    legacy: "External payment links texted manually; sales reps must ask customer for screenshots to confirm receipt",
+                    gtmsip: "One-click in-chat Razorpay payment links with instant automatic status reconciliation on deals",
+                  },
+                  {
+                    capability: "Multi-Brand & Agency Tenancy",
+                    legacy: "Shared browser profiles and passwords with accidental message leakage across client accounts",
+                    gtmsip: "Strict row-level workspace isolation with Owner, Admin, and Agent role-based permissions",
+                  },
+                ].map((row, idx) => (
+                  <tr key={idx} className="transition-colors hover:bg-stone-50/50 dark:hover:bg-white/[0.01]">
+                    <th scope="row" className="px-6 py-4 font-bold text-stone-900 dark:text-white">
+                      {row.capability}
+                    </th>
+                    <td className="px-6 py-4 text-stone-600 dark:text-stone-400">
+                      <div className="flex items-start gap-2.5">
+                        <span className="mt-0.5 text-stone-400 dark:text-stone-500 shrink-0">✕</span>
+                        <span>{row.legacy}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 font-medium text-stone-900 dark:text-stone-200 bg-brand-50/30 dark:bg-brand-950/10">
+                      <div className="flex items-start gap-2.5">
+                        <span className="mt-0.5 text-emerald-600 dark:text-emerald-400 font-bold shrink-0">✓</span>
+                        <span>{row.gtmsip}</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <CtaBand />
       <div className="section" />
     </>

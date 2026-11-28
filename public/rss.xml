@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GTMSip Playbooks &amp; Strategic Guides</title>
+    <link>https://gtmsip.com/blog</link>
+    <description>Actionable playbooks for WhatsApp marketing automation, Firecrawl lead scraping, Claude MCP sales workflows, and social commerce.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 28 Nov 2026 15:36:47 GMT</lastBuildDate>
+    <atom:link href="https://gtmsip.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[How to Automate WhatsApp Marketing Safely in 2025]]></title>
+      <link>https://gtmsip.com/blog/how-to-automate-whatsapp-marketing</link>
+      <guid isPermaLink="true">https://gtmsip.com/blog/how-to-automate-whatsapp-marketing</guid>
+      <description><![CDATA[A complete guide to automating WhatsApp marketing using official Meta Business APIs. Learn template approvals, the 24-hour window, opt-out compliance, and team routing.]]></description>
+      <pubDate>Sat, 28 Nov 2026 15:36:47 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[The Complete Guide to AI Sales Automation in 2025]]></title>
+      <link>https://gtmsip.com/blog/ai-sales-automation-guide</link>
+      <guid isPermaLink="true">https://gtmsip.com/blog/ai-sales-automation-guide</guid>
+      <description><![CDATA[Learn how to build end-to-end AI sales workflows: automate lead scraping, AI data enrichment, Claude MCP integration, and human-in-the-loop closing.]]></description>
+      <pubDate>Sat, 28 Nov 2026 15:36:47 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Automated B2B Lead Gen with Firecrawl & Google Sheets]]></title>
+      <link>https://gtmsip.com/blog/b2b-lead-generation-firecrawl-google-sheets</link>
+      <guid isPermaLink="true">https://gtmsip.com/blog/b2b-lead-generation-firecrawl-google-sheets</guid>
+      <description><![CDATA[Discover how to extract high-quality business leads with Firecrawl web scraping, enrich data with AI, and sync to Google Sheets and your CRM automatically.]]></description>
+      <pubDate>Sat, 28 Nov 2026 15:36:47 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Instagram Comment-to-DM Strategy: Convert Views into Sales]]></title>
+      <link>https://gtmsip.com/blog/instagram-comment-to-dm-strategy</link>
+      <guid isPermaLink="true">https://gtmsip.com/blog/instagram-comment-to-dm-strategy</guid>
+      <description><![CDATA[Learn how to turn viral Instagram Reels and posts into paying customers using keyword comment-to-DM automation, instant public replies, and CRM lead capture.]]></description>
+      <pubDate>Sat, 28 Nov 2026 15:36:47 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[WhatsApp Marketing vs Email Marketing: Conversion & ROI Compared]]></title>
+      <link>https://gtmsip.com/blog/whatsapp-marketing-vs-email-marketing</link>
+      <guid isPermaLink="true">https://gtmsip.com/blog/whatsapp-marketing-vs-email-marketing</guid>
+      <description><![CDATA[A comprehensive comparison of WhatsApp marketing vs email marketing: open rates, click-through rates, compliance, customer preferences, and ROI analysis.]]></description>
+      <pubDate>Sat, 28 Nov 2026 15:36:47 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Automated Sales Follow-Up Workflows: Best Practices & Cadence]]></title>
+      <link>https://gtmsip.com/blog/automated-follow-up-sales-workflows</link>
+      <guid isPermaLink="true">https://gtmsip.com/blog/automated-follow-up-sales-workflows</guid>
+      <description><![CDATA[Learn how to design multi-touch sales follow-up workflows across WhatsApp and email that convert warm leads without annoying prospects or sounding like a robot.]]></description>
+      <pubDate>Sat, 28 Nov 2026 15:36:47 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

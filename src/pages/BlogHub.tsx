@@ -121,7 +121,7 @@ export default function BlogHub() {
                     <div className="flex items-center gap-3">
                       <img
                         src={featured.author.avatar}
-                        alt={featured.author.name}
+                        alt={`${featured.author.name}, ${featured.author.role}`}
                         className="h-10 w-10 rounded-full object-cover"
                         loading="lazy"
                       />
@@ -186,7 +186,7 @@ export default function BlogHub() {
                       <div className="flex items-center gap-2.5">
                         <img
                           src={post.author.avatar}
-                          alt={post.author.name}
+                          alt={`${post.author.name}, ${post.author.role}`}
                           className="h-8 w-8 rounded-full object-cover"
                           loading="lazy"
                         />

@@ -273,11 +273,15 @@ export interface PageMetaOptions {
       upsertMeta("property", "og:type", ogType);
       upsertMeta("property", "og:image", absoluteOgImage);
       upsertMeta("property", "og:image:alt", title);
+      upsertMeta("property", "og:image:width", "1200");
+      upsertMeta("property", "og:image:height", "630");
       upsertMeta("property", "og:site_name", SITE_NAME);
       upsertMeta("property", "og:locale", "en_US");
 
       // 5. Twitter / X Cards
       upsertMeta("name", "twitter:card", "summary_large_image");
+      upsertMeta("name", "twitter:site", "@gtmsip");
+      upsertMeta("name", "twitter:creator", "@gtmsip");
       upsertMeta("name", "twitter:title", title);
       upsertMeta("name", "twitter:description", description);
       upsertMeta("name", "twitter:image", absoluteOgImage);
