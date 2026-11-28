@@ -6,7 +6,7 @@ import { Avatar, ChannelBadge, MockFrame, Pill } from "./common";
 export function InboxMockup({ className = "" }: { className?: string }) {
   const conversations = [
     {
-      name: "Aarav Sharma",
+      name: "Tinkal Kumar",
       channel: "WhatsApp" as const,
       preview: "Can I get the invoice for Order #4821?",
       time: "2m",
@@ -33,7 +33,7 @@ export function InboxMockup({ className = "" }: { className?: string }) {
       initials: "NI",
     },
     {
-      name: "Rahul Verma",
+      name: "Babita",
       channel: "Instagram" as const,
       preview: "Is the workshop recording available?",
       time: "3h",
@@ -68,11 +68,10 @@ export function InboxMockup({ className = "" }: { className?: string }) {
             {conversations.map((c) => (
               <li
                 key={c.name}
-                className={`flex cursor-default items-start gap-2 px-3 py-2 transition ${
-                  c.active
+                className={`flex cursor-default items-start gap-2 px-3 py-2 transition ${c.active
                     ? "bg-brand-50 dark:bg-brand-400/10"
                     : "hover:bg-stone-50 dark:hover:bg-white/[0.04]"
-                }`}
+                  }`}
               >
                 <Avatar initials={c.initials} tone={c.tone} size="sm" />
                 <span className="min-w-0 flex-1">
@@ -222,8 +221,17 @@ export function InboxMockup({ className = "" }: { className?: string }) {
 /* ------------------------------------------------------------------ */
 /* Deal pipeline with payment status                                   */
 /* ------------------------------------------------------------------ */
+interface PipelineCardItem {
+  name: string;
+  value: string;
+  source: string;
+  tone: "brand" | "amber" | "sky" | "violet" | "rose";
+  initials: string;
+  paid?: boolean;
+}
+
 export function PipelineMockup({ className = "" }: { className?: string }) {
-  const columns = [
+  const columns: { stage: string; count: number; cards: PipelineCardItem[] }[] = [
     {
       stage: "New lead",
       count: 6,

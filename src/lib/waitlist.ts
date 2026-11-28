@@ -16,6 +16,12 @@ const STORAGE_ENTRIES_KEY = "gtmsip_waitlist_entries_v2";
 const DEFAULT_INITIAL_COUNT = 0;
 export const MAX_WAITLIST_SPOTS = 100;
 
+// Singleton cache to deduplicate simultaneous network calls across components
+let activeFetchPromise: Promise<number | null> | null = null;
+let cachedServerCount: number | null = null;
+let lastFetchTime = 0;
+const CACHE_TTL_MS = 60000; // 60 seconds
+
 export function getWaitlistCount(): number {
   if (typeof window === "undefined") return DEFAULT_INITIAL_COUNT;
   try {
@@ -33,6 +39,43 @@ export function getWaitlistCount(): number {
     /* storage unavailable */
   }
   return DEFAULT_INITIAL_COUNT;
+}
+
+/**
+ * Deduplicated server fetcher.
+ * Guarantees only 1 network call occurs even if multiple components mount simultaneously.
+ */
+export function fetchServerWaitlistCount(): Promise<number | null> {
+  const now = Date.now();
+  if (cachedServerCount !== null && now - lastFetchTime < CACHE_TTL_MS) {
+    return Promise.resolve(cachedServerCount);
+  }
+
+  if (activeFetchPromise) {
+    return activeFetchPromise;
+  }
+
+  activeFetchPromise = fetch("/api/waitlist")
+    .then((res) => (res.ok ? res.json() : null))
+    .then((data) => {
+      if (Array.isArray(data)) {
+        const count = Math.min(data.length, MAX_WAITLIST_SPOTS);
+        cachedServerCount = count;
+        lastFetchTime = Date.now();
+        try {
+          localStorage.setItem(STORAGE_COUNT_KEY, count.toString());
+          localStorage.setItem(STORAGE_ENTRIES_KEY, JSON.stringify(data));
+        } catch {}
+        return count;
+      }
+      return null;
+    })
+    .catch(() => null)
+    .finally(() => {
+      activeFetchPromise = null;
+    });
+
+  return activeFetchPromise;
 }
 
 export async function saveWaitlistEntry(data: {
@@ -58,6 +101,8 @@ export async function saveWaitlistEntry(data: {
     entries.push(localEntry);
     localStorage.setItem(STORAGE_ENTRIES_KEY, JSON.stringify(entries));
     localStorage.setItem(STORAGE_COUNT_KEY, entries.length.toString());
+    cachedServerCount = entries.length;
+    lastFetchTime = Date.now();
   } catch {
     /* storage unavailable */
   }
@@ -78,15 +123,20 @@ export async function saveWaitlistEntry(data: {
     if (res.ok) {
       const json = await res.json();
       if (json.spotNumber) {
-        window.dispatchEvent(new CustomEvent("gtmsip-waitlist-updated", { detail: { count: json.count } }));
+        cachedServerCount = json.count;
+        window.dispatchEvent(
+          new CustomEvent("gtmsip-waitlist-updated", { detail: { count: json.count } }),
+        );
         return { spotNumber: json.spotNumber };
       }
     }
   } catch {
-    /* offline / fallback */
+    /* offline fallback */
   }
 
-  window.dispatchEvent(new CustomEvent("gtmsip-waitlist-updated", { detail: { count: nextSpot } }));
+  window.dispatchEvent(
+    new CustomEvent("gtmsip-waitlist-updated", { detail: { count: nextSpot } }),
+  );
   return { spotNumber: nextSpot };
 }
 
@@ -95,20 +145,11 @@ export function useWaitlistCount() {
   const [count, setCount] = useState<number>(getWaitlistCount);
 
   useEffect(() => {
-    // Attempt fetch from server JSON store on mount
-    fetch("/api/waitlist")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (Array.isArray(data)) {
-          const serverCount = Math.min(data.length, MAX_WAITLIST_SPOTS);
-          setCount(serverCount);
-          try {
-            localStorage.setItem(STORAGE_COUNT_KEY, serverCount.toString());
-            localStorage.setItem(STORAGE_ENTRIES_KEY, JSON.stringify(data));
-          } catch {}
-        }
-      })
-      .catch(() => {});
+    fetchServerWaitlistCount().then((serverCount) => {
+      if (typeof serverCount === "number") {
+        setCount(serverCount);
+      }
+    });
 
     const handleUpdate = (e: Event) => {
       const customEvent = e as CustomEvent<{ count: number }>;
@@ -139,7 +180,14 @@ export function exportWaitlistCSV() {
       alert("No waitlist entries recorded yet.");
       return;
     }
-    const headers = ["Spot Number", "Full Name", "Phone Number", "Work Email", "Organization", "Joined Date"];
+    const headers = [
+      "Spot Number",
+      "Full Name",
+      "Phone Number",
+      "Work Email",
+      "Organization",
+      "Joined Date",
+    ];
     const rows = entries.map((e) => [
       e.spotNumber,
       `"${e.fullName.replace(/"/g, '""')}"`,
