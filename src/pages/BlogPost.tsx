@@ -148,7 +148,7 @@ export default function BlogPost() {
         <div className="mt-6 flex items-center gap-3.5 border-t border-b border-stone-200 py-4 dark:border-white/10">
           <img
             src={post.author.avatar}
-            alt={post.author.name}
+            alt={`${post.author.name}, ${post.author.role} at GTMSip`}
             className="h-11 w-11 rounded-full object-cover"
           />
           <div>

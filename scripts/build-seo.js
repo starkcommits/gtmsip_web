@@ -345,20 +345,59 @@ ${urlEntries}
 </urlset>`;
 }
 
+function generateRssXml() {
+  const blogRoutes = ROUTES.filter((r) => r.path.startsWith('/blog/') && r.path !== '/blog');
+  const now = new Date().toUTCString();
+
+  const items = blogRoutes
+    .map((b) => {
+      const url = `${SITE_URL}${b.path}`;
+      return `    <item>
+      <title><![CDATA[${b.title.replace(/ \| GTMSip.*$/, '')}]]></title>
+      <link>${url}</link>
+      <guid isPermaLink="true">${url}</guid>
+      <description><![CDATA[${b.description}]]></description>
+      <pubDate>${now}</pubDate>
+    </item>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GTMSip Playbooks &amp; Strategic Guides</title>
+    <link>${SITE_URL}/blog</link>
+    <description>Actionable playbooks for WhatsApp marketing automation, Firecrawl lead scraping, Claude MCP sales workflows, and social commerce.</description>
+    <language>en-us</language>
+    <lastBuildDate>${now}</lastBuildDate>
+    <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+${items}
+  </channel>
+</rss>`;
+}
+
 function run() {
   const publicDir = path.resolve(process.cwd(), 'public');
   const distDir = path.resolve(process.cwd(), 'dist');
 
-  // 1. Generate sitemap.xml in public/
+  // 1. Generate sitemap.xml and rss.xml in public/
   const sitemapContent = generateSitemapXml();
   const publicSitemap = path.join(publicDir, 'sitemap.xml');
   fs.writeFileSync(publicSitemap, sitemapContent, 'utf-8');
   console.log(`✓ Wrote ${ROUTES.length} URLs to public/sitemap.xml`);
 
-  // 2. If dist exists, copy sitemap.xml and robots.txt, and generate static HTML for each route
+  const rssContent = generateRssXml();
+  const publicRss = path.join(publicDir, 'rss.xml');
+  fs.writeFileSync(publicRss, rssContent, 'utf-8');
+  console.log(`✓ Generated public/rss.xml with ${ROUTES.filter((r) => r.path.startsWith('/blog/') && r.path !== '/blog').length} articles`);
+
+  // 2. If dist exists, copy sitemap.xml, rss.xml, and robots.txt, and generate static HTML for each route
   if (fs.existsSync(distDir)) {
     const distSitemap = path.join(distDir, 'sitemap.xml');
     fs.writeFileSync(distSitemap, sitemapContent, 'utf-8');
+
+    const distRss = path.join(distDir, 'rss.xml');
+    fs.writeFileSync(distRss, rssContent, 'utf-8');
 
     const publicRobots = path.join(publicDir, 'robots.txt');
     if (fs.existsSync(publicRobots)) {

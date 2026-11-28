@@ -179,7 +179,7 @@ export function Hero() {
                 />
                 <img
                   src={resolved === "dark" ? "/images/symbol-dark-2x.png" : "/images/symbol-light-2x.png"}
-                  alt="GTMSip Platform Symbol"
+                  alt="GTMSip — AI Sales Automation & Meta Business Platform"
                   width={72}
                   height={72}
                   fetchPriority="high"
