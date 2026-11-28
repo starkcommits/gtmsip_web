@@ -8,6 +8,12 @@ let lenisInstance: Lenis | null = null;
 export function useSmoothScroll() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
+    // Mobile optimization: Skip Lenis on mobile/touch screens to preserve 100% native 120Hz scrolling
+    if (typeof window !== "undefined") {
+      if (window.innerWidth < 1024 || !window.matchMedia("(pointer: fine)").matches) {
+        return;
+      }
+    }
 
     const lenis = new Lenis({
       lerp: 0.1,

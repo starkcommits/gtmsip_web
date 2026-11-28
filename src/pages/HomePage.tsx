@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import {
   usePageMeta,
   ORGANIZATION_SCHEMA,
@@ -5,16 +6,29 @@ import {
   buildFaqSchema,
 } from "../lib/seo";
 import { Hero, TrustStrip } from "../sections/Hero";
-import { FeaturePillars } from "../sections/FeaturePillars";
-import { CommentToDmWalkthrough } from "../sections/Walkthrough";
-import {
-  HomeFaq,
-  PlanTeaser,
-  SecuritySummary,
-  TeamsBento,
-} from "../sections/HomeSections";
 import { CtaBand } from "../components/ui";
 import { HOME_FAQ } from "../data/faq";
+
+// Synchronous above-the-fold critical content (Hero + TrustStrip) guarantees instant LCP
+// Lazy load below-the-fold sections to slice ~105 KB of JavaScript from initial main-thread execution
+const FeaturePillars = lazy(() =>
+  import("../sections/FeaturePillars").then((m) => ({ default: m.FeaturePillars })),
+);
+const CommentToDmWalkthrough = lazy(() =>
+  import("../sections/Walkthrough").then((m) => ({ default: m.CommentToDmWalkthrough })),
+);
+const PlanTeaser = lazy(() =>
+  import("../sections/HomeSections").then((m) => ({ default: m.PlanTeaser })),
+);
+const TeamsBento = lazy(() =>
+  import("../sections/HomeSections").then((m) => ({ default: m.TeamsBento })),
+);
+const SecuritySummary = lazy(() =>
+  import("../sections/HomeSections").then((m) => ({ default: m.SecuritySummary })),
+);
+const HomeFaq = lazy(() =>
+  import("../sections/HomeSections").then((m) => ({ default: m.HomeFaq })),
+);
 
 export default function HomePage() {
   usePageMeta({
@@ -60,15 +74,17 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustStrip />
-      <FeaturePillars />
-      <CommentToDmWalkthrough />
-      <PlanTeaser />
-      <TeamsBento />
-      <SecuritySummary />
-      <HomeFaq />
-      <div className="section">
-        <CtaBand />
-      </div>
+      <Suspense fallback={<div className="min-h-[200px]" />}>
+        <FeaturePillars />
+        <CommentToDmWalkthrough />
+        <PlanTeaser />
+        <TeamsBento />
+        <SecuritySummary />
+        <HomeFaq />
+        <div className="section">
+          <CtaBand />
+        </div>
+      </Suspense>
     </>
   );
 }

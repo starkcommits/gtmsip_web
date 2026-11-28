@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agenticresource.org/schema/v0.91/manifest.json",
+  "name": "GTMSip",
+  "description": "AI sales, marketing automation, and customer engagement platform with Claude MCP integration and Meta Business APIs.",
+  "publisher": "gtmsip.com",
+  "entries": [
+    {
+      "identifier": "urn:air:gtmsip.com:mcp:sales-assistant",
+      "displayName": "GTMSip Claude MCP Sales Assistant",
+      "description": "Model Context Protocol endpoint for automated B2B lead scraping, WhatsApp messaging, and CRM deal pipeline management.",
+      "type": "application/mcp-server-card+json",
+      "url": "https://gtmsip.com/features/ai-workflows-mcp",
+      "representativeQueries": [
+        "Automate WhatsApp follow-ups with AI",
+        "Scrape B2B leads using Firecrawl",
+        "Connect sales pipeline to Claude MCP",
+        "Convert Instagram comments to direct messages"
+      ]
+    },
+    {
+      "identifier": "urn:air:gtmsip.com:api:lead-automation",
+      "displayName": "GTMSip Lead Generation & Messaging API",
+      "description": "REST API and webhook integration for lead enrichment, broadcast campaigns, and multi-channel team inbox.",
+      "type": "application/json",
+      "url": "https://gtmsip.com/features/integrations-api",
+      "representativeQueries": [
+        "Inbound WhatsApp webhook integration",
+        "Sync leads from Google Sheets to CRM pipeline",
+        "Trigger automated sales sequence"
+      ]
+    }
+  ]
+}

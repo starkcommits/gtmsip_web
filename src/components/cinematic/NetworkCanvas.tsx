@@ -56,6 +56,8 @@ export function NetworkCanvas() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || prefersReducedMotion()) return;
+    // Mobile optimization: completely disable ambient canvas on mobile devices (<768px) to eliminate CPU blocking
+    if (typeof window !== "undefined" && window.innerWidth < 768) return;
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
@@ -328,7 +330,7 @@ export function NetworkCanvas() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[-1] h-full w-full"
+      className="pointer-events-none fixed inset-0 z-[-1] hidden md:block h-full w-full"
     />
   );
 }

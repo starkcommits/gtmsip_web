@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- Google tag (gtag.js / GTM) -->
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PSDQTD5B"></script>
+  <!-- Google tag (gtag.js / GTM) - Non-blocking idle initialization -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -12,7 +11,23 @@
 
     gtag('config', 'G-DB39Z0E2EF');
     gtag('config', 'GTM-PSDQTD5B');
+
+    // Deferred tag injection to eliminate main-thread blocking during critical paint
+    function loadAnalytics() {
+      if (window.__gtmLoaded) return;
+      window.__gtmLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PSDQTD5B';
+      document.head.appendChild(s);
+    }
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(function() { setTimeout(loadAnalytics, 1200); });
+    } else {
+      window.addEventListener('load', function() { setTimeout(loadAnalytics, 1500); });
+    }
   </script>
+  <link rel="ard" href="https://gtmsip.com/.well-known/ard.json" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GTMSip — AI Sales &amp; Marketing Automation Platform</title>

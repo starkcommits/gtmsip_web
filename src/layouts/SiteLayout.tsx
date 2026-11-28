@@ -1,16 +1,20 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { WaitlistModal } from "../components/WaitlistModal";
 import { NetworkCanvas } from "../components/cinematic/NetworkCanvas";
 import { Loader } from "../components/cinematic/Loader";
 import { Cursor } from "../components/cinematic/Cursor";
 import { ScrollChrome } from "../components/cinematic/ScrollChrome";
 import { MicroInteractions } from "../components/cinematic/MicroInteractions";
 import { scrollToY, useSmoothScroll } from "../lib/lenis";
-import { ScrollTrigger, prefersReducedMotion } from "../lib/motion";
+import { ScrollTrigger } from "../lib/motion";
 import { trackPageView } from "../lib/analytics";
+
+// Lazy-load modal to avoid downloading modal dialogs & form schemas on initial load
+const WaitlistModal = lazy(() =>
+  import("../components/WaitlistModal").then((m) => ({ default: m.WaitlistModal })),
+);
 
 /** Scrolls to top on route change; honours #hash targets; tracks SPA pageviews. */
 function ScrollManager() {
@@ -59,7 +63,9 @@ export function SiteLayout() {
       <Cursor />
       <MicroInteractions />
       <Navbar />
-      <WaitlistModal />
+      <Suspense fallback={null}>
+        <WaitlistModal />
+      </Suspense>
       <ScrollChrome />
       <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
         <Outlet />
