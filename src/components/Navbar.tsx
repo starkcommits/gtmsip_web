@@ -209,7 +209,7 @@ function SolutionsMenu({ onNavigate }: { onNavigate?: () => void }) {
                   <p className="text-sm font-bold text-stone-800 dark:text-stone-100">
                     {solution.eyebrow}
                   </p>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 line-clamp-1">
+                  <p className="text-xs text-stone-600 dark:text-stone-300 line-clamp-1">
                     {solution.heroHeadline}
                   </p>
                 </div>
@@ -314,7 +314,7 @@ export function Navbar() {
           className="border-t border-stone-200 bg-white lg:hidden dark:border-white/10 dark:bg-[#0b0a14]"
         >
           <div className="container-x max-h-[75vh] overflow-y-auto overscroll-contain py-4">
-            <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+            <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
               Solutions
             </p>
             <div className="grid grid-cols-1 gap-1 pb-4 mb-4 border-b border-stone-100 dark:border-white/5">
@@ -331,7 +331,7 @@ export function Navbar() {
               ))}
             </div>
 
-            <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+            <p className="px-1 pb-2 text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
               Features
             </p>
             <div className="grid grid-cols-1 gap-1">

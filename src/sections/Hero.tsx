@@ -152,14 +152,14 @@ export function Hero() {
       </div>
 
       {/* HUD micro labels */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden font-mono text-[10px] font-bold tracking-[0.18em] text-stone-500/70 dark:text-stone-400/60 lg:block">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden font-mono text-[10px] font-bold tracking-[0.18em] text-stone-700 dark:text-stone-300 lg:block">
         <span className="absolute left-10 top-24 flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 animate-pulseDot rounded-full bg-emerald-400" />
           SYS.ONLINE
         </span>
         <span className="absolute right-10 top-24">LATENCY 12ms</span>
         <span className="absolute left-10 bottom-24">WEBHOOK 200</span>
-        <span className="absolute right-10 bottom-24 text-brand-600/80 dark:text-brand-400/70">SCROLL TO SCRUB ▾</span>
+        <span className="absolute right-10 bottom-24 text-brand-700 dark:text-brand-300">SCROLL TO SCRUB ▾</span>
       </div>
 
       {/* Content */}
@@ -246,30 +246,30 @@ export function Hero() {
           </div>
 
           {/* Trust line */}
-          <p className="hero-stagger mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs font-semibold text-stone-500 dark:text-stone-400">
+          <p className="hero-stagger mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-xs font-semibold text-stone-600 dark:text-stone-300">
             <span className="inline-flex items-center gap-1.5">
-              <CheckIcon size={13} className="text-brand-500" />
+              <CheckIcon size={13} className="text-brand-600 dark:text-brand-400" />
               Firecrawl-powered lead scraping
             </span>
             <span aria-hidden="true" className="hidden sm:inline">
               ·
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CheckIcon size={13} className="text-brand-500" />
+              <CheckIcon size={13} className="text-brand-600 dark:text-brand-400" />
               Claude MCP &amp; AI workflows
             </span>
             <span aria-hidden="true" className="hidden sm:inline">
               ·
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CheckIcon size={13} className="text-brand-500" />
+              <CheckIcon size={13} className="text-brand-600 dark:text-brand-400" />
               Google Sheets &amp; Drive plugins
             </span>
             <span aria-hidden="true" className="hidden sm:inline">
               ·
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <CheckIcon size={13} className="text-brand-500" />
+              <CheckIcon size={13} className="text-brand-600 dark:text-brand-400" />
               Official WhatsApp Business &amp; Instagram APIs
             </span>
           </p>
@@ -379,17 +379,17 @@ export function TrustStrip() {
           <span className="absolute left-3 top-3 h-3 w-3 border-l border-t border-brand-400/50" />
           <span className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-cyan-400/40" />
           <span className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-400/15 text-brand-400">
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-700 dark:bg-brand-400/15 dark:text-brand-300">
               <CheckIcon size={15} />
             </span>
             <span>
-              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-stone-500 dark:text-stone-400">
+              <span className="block font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-stone-700 dark:text-stone-300">
                 {String(TRUST_ITEMS.indexOf(item) + 1).padStart(2, "0")} / SYS.CHECK
               </span>
-              <span className="mt-1 block text-[13px] font-extrabold leading-snug text-stone-800 dark:text-stone-100">
+              <span className="mt-1 block text-[13px] font-extrabold leading-snug text-stone-900 dark:text-stone-100">
                 {item.title}
               </span>
-              <span className="mt-1 block text-xs leading-relaxed text-stone-500 dark:text-stone-400">
+              <span className="mt-1 block text-xs leading-relaxed text-stone-600 dark:text-stone-300">
                 {item.detail}
               </span>
             </span>
