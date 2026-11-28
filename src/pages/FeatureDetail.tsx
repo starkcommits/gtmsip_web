@@ -1,9 +1,10 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema, buildFaqSchema } from "../lib/seo";
 import { FEATURES, getFeature } from "../data/features";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { ComingSoon, CtaBand, PageHeader } from "../components/ui";
 import { Mockup } from "../components/mockups";
+import { Accordion } from "../components/Accordion";
 import { WaitlistForm } from "../components/forms/WaitlistForm";
 import { openWaitlistModal } from "../lib/waitlist";
 import {
@@ -40,6 +41,9 @@ export default function FeatureDetail() {
           description: feature.metaDescription ?? feature.summary,
           operatingSystem: "Web",
         },
+        ...(feature.faqs && feature.faqs.length > 0
+          ? [buildFaqSchema(feature.faqs)]
+          : []),
       ]
       : undefined,
   });
@@ -179,6 +183,26 @@ export default function FeatureDetail() {
                               </div>
                           </div>
                         </section>
+      )}
+
+      {/* Frequently Asked Questions (FAQ) */}
+      {feature.faqs && feature.faqs.length > 0 && (
+        <section className="section border-b border-stone-200 dark:border-white/10" aria-labelledby="faq-title">
+          <div className="container-x max-w-4xl">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Frequently Asked Questions
+            </span>
+            <h2 id="faq-title" className="mt-2 text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
+              Everything you need to know about {feature.title.toLowerCase()}
+            </h2>
+            <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+              Detailed technical answers regarding Meta compliance, API boundaries, and workflow integration.
+            </p>
+            <div className="mt-8">
+              <Accordion items={feature.faqs} />
+            </div>
+          </div>
+        </section>
       )}
 
       {/* Related Solutions & Strategic Guides (Topic Cluster) */}

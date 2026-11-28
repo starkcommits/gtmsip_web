@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
+import type { FaqItem } from "../lib/seo";
 import {
   CalendarIcon,
   CameraIcon,
@@ -56,6 +57,7 @@ export interface FeatureDetail {
   steps: Step[];
   platformNotes?: PlatformNote[];
   relatedLinks?: Array<{ title: string; description: string; href: string }>;
+  faqs?: FaqItem[];
   status?: "soon";
 }
 
@@ -139,6 +141,23 @@ export const FEATURES: FeatureDetail[] = [
         href: "/blog/ai-sales-automation-guide",
       },
     ],
+    faqs: [
+      {
+        question: "What is the Model Context Protocol (MCP) and how does GTMSip use it?",
+        answer:
+          "MCP is an open standard created by Anthropic that allows AI assistants like Claude to securely access external systems. In GTMSip, our MCP server gives your approved AI assistants real-time read and write access to deal stages, conversation logs, and contact notes under strict role permissions.",
+      },
+      {
+        question: "Can the AI assistant send messages directly to customers without human review?",
+        answer:
+          "No. By default, GTMSip enforces Human-in-the-Loop (HITL) safeguards. The AI generates draft responses in the shared inbox, and your team members review and approve every message before it reaches a customer.",
+      },
+      {
+        question: "Are my workspace API keys and customer data safe?",
+        answer:
+          "Yes. GTMSip uses scoped, revocable tokens for MCP connections. Your database records remain isolated with tenant row-level security, and data is never used to train public foundation models.",
+      },
+    ],
   },
   {
     slug: "lead-scraping-firecrawl",
@@ -217,6 +236,23 @@ export const FEATURES: FeatureDetail[] = [
         title: "B2B Lead Gen with Firecrawl Guide",
         description: "Learn how to extract and enrich high-intent accounts on autopilot.",
         href: "/blog/b2b-lead-generation-firecrawl-google-sheets",
+      },
+    ],
+    faqs: [
+      {
+        question: "How does Firecrawl extract B2B leads from dynamic websites?",
+        answer:
+          "Firecrawl executes headless browser sessions, renders client-side JavaScript, and converts HTML into clean, structured JSON and Markdown. It extracts verified emails, executive names, phone numbers, and company bios while bypassing anti-bot blockers.",
+      },
+      {
+        question: "How does the Google Sheets integration work?",
+        answer:
+          "GTMSip uses official Google Workspace OAuth permissions to sync scraped leads directly into your designated Google Sheet in real time. Changes made in the sheet reflect back into your GTMSip pipeline automatically.",
+      },
+      {
+        question: "Does scraping comply with data privacy regulations?",
+        answer:
+          "Yes. GTMSip only extracts publicly accessible business information and provides built-in opt-out suppression to keep your outreach compliant with GDPR, CAN-SPAM, and local regulations.",
       },
     ],
   },
@@ -308,6 +344,23 @@ export const FEATURES: FeatureDetail[] = [
         href: "/blog/how-to-automate-whatsapp-marketing",
       },
     ],
+    faqs: [
+      {
+        question: "Is this built on the official Meta WhatsApp Business Cloud API?",
+        answer:
+          "Yes. GTMSip integrates directly with Meta's official Cloud API. You keep full ownership of your phone number, business verification status, and Meta Business Manager assets.",
+      },
+      {
+        question: "What is collision detection in the shared inbox?",
+        answer:
+          "Collision detection indicates in real time when another teammate is viewing or typing a response to a customer thread, preventing embarrassing double-replies or conflicting answers.",
+      },
+      {
+        question: "What happens when the 24-hour customer service window expires?",
+        answer:
+          "Once 24 hours have passed since the customer's last message, free-form text messaging is disabled by Meta. GTMSip displays a countdown timer on the thread and enables one-click sending of pre-approved Meta Template Messages to re-open the window.",
+      },
+    ],
   },
   {
     slug: "broadcasts-drip-flows",
@@ -395,6 +448,23 @@ export const FEATURES: FeatureDetail[] = [
         title: "Automated Follow-Up Workflows",
         description: "How to design thoughtful multi-touch sales cadences that convert.",
         href: "/blog/automated-follow-up-sales-workflows",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do template approvals work for WhatsApp broadcasts?",
+        answer:
+          "Every marketing broadcast must use a template approved by Meta. You can submit and preview templates directly inside GTMSip. Once approved by Meta (usually within 1–5 minutes), templates can be sent to your opted-in contact segments.",
+      },
+      {
+        question: "Can drip follow-up sequences automatically stop when a prospect replies?",
+        answer:
+          "Yes. GTMSip drip flows feature intelligent branching logic. The moment a customer responds or takes an action like paying an invoice, the automated flow immediately terminates and routes the conversation to a human rep.",
+      },
+      {
+        question: "How are customer opt-outs handled?",
+        answer:
+          "When a recipient replies 'STOP', 'UNSUBSCRIBE', or uses Meta's built-in opt-out quick reply, GTMSip immediately flags their record and removes them from all future automated broadcasts.",
       },
     ],
   },
@@ -495,6 +565,23 @@ export const FEATURES: FeatureDetail[] = [
         href: "/blog/instagram-comment-to-dm-strategy",
       },
     ],
+    faqs: [
+      {
+        question: "How quickly does GTMSip reply to post or Reel comments?",
+        answer:
+          "Under 3 seconds. The automated webhook listener detects keyword matches instantly, publishes a randomized public reply, and delivers a private direct message to the user's Instagram inbox.",
+      },
+      {
+        question: "Can I run multiple keyword triggers on the same Reel?",
+        answer:
+          "Yes. You can configure multiple active keyword triggers per post or Reel, mapping different keywords to distinct lead magnets, discount codes, or booking links.",
+      },
+      {
+        question: "Does comment automation comply with Instagram's anti-spam rules?",
+        answer:
+          "Yes. GTMSip operates strictly within the official Instagram Graph API rules, sending a single initial DM per comment and rotating public comment responses to maintain authentic community engagement.",
+      },
+    ],
   },
   {
     slug: "leads-pipelines-payments",
@@ -578,6 +665,23 @@ export const FEATURES: FeatureDetail[] = [
         title: "Pricing Plans & Tiers",
         description: "Compare Starter, Growth, and Agency packages for growing teams.",
         href: "/pricing",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do in-chat Razorpay payment links work?",
+        answer:
+          "Sales reps can generate dynamic Razorpay payment links directly from the shared inbox sidebar with custom amounts and product descriptions. When the customer pays, the deal status updates to 'Paid' in real time.",
+      },
+      {
+        question: "Does GTMSip store customer credit card or banking information?",
+        answer:
+          "No. All transactions are securely processed on Razorpay's PCI-DSS Level 1 compliant infrastructure. GTMSip only stores transaction reference IDs and payment confirmation webhooks.",
+      },
+      {
+        question: "Can I customize pipeline stages for my business model?",
+        answer:
+          "Yes. You can create custom sales pipelines with customized stages (e.g., Prospect, Demo Scheduled, Proposal Sent, Won, Lost) to match your team's specific sales methodology.",
       },
     ],
   },
@@ -665,6 +769,23 @@ export const FEATURES: FeatureDetail[] = [
         href: "/blog/whatsapp-marketing-vs-email-marketing",
       },
     ],
+    faqs: [
+      {
+        question: "What inbox performance metrics does GTMSip measure?",
+        answer:
+          "GTMSip tracks first-response time (FRT), median resolution time, conversation volume per channel, unassigned queue depth, and individual rep productivity.",
+      },
+      {
+        question: "How does Meta Ads attribution work?",
+        answer:
+          "By connecting your authorized Meta Ads account, GTMSip correlates Click-to-WhatsApp and Instagram ad campaigns with incoming conversations, allowing you to calculate cost-per-lead and customer acquisition cost (CAC) beside actual chat threads.",
+      },
+      {
+        question: "Can I export analytics reports for client presentations?",
+        answer:
+          "Yes. Analytics reports can be exported as CSV or PDF summaries, categorized by workspace, date range, and marketing channel.",
+      },
+    ],
   },
   {
     slug: "teams-roles-workspaces",
@@ -748,6 +869,23 @@ export const FEATURES: FeatureDetail[] = [
         title: "Platform Security & Trust",
         description: "Inspect row-level tenant isolation, token encryption, and access controls.",
         href: "/security",
+      },
+    ],
+    faqs: [
+      {
+        question: "What user roles are available in GTMSip?",
+        answer:
+          "GTMSip provides three core roles: Owner (full billing and workspace control), Admin (channel connections, automations, and team setup), and Agent (inbox conversation handling and pipeline updates).",
+      },
+      {
+        question: "Can agencies manage multiple client brands under one account?",
+        answer:
+          "Yes. GTMSip supports isolated multi-brand workspaces. Team members only see the clients and workspaces they are invited to, with complete data separation.",
+      },
+      {
+        question: "Is there an audit log of team actions?",
+        answer:
+          "Yes. Workspace administrators can review timestamped logs of conversation assignments, template broadcasts, permission changes, and data exports.",
       },
     ],
   },
@@ -835,6 +973,23 @@ export const FEATURES: FeatureDetail[] = [
         href: "/security",
       },
     ],
+    faqs: [
+      {
+        question: "How are outbound webhooks authenticated and secured?",
+        answer:
+          "Every webhook sent by GTMSip includes an HMAC-SHA256 signature in the header, generated using your workspace secret key so your server can verify message integrity and prevent spoofing.",
+      },
+      {
+        question: "What can external tools do via the REST API?",
+        answer:
+          "The REST API provides scoped CRUD endpoints for contacts, deal pipeline stages, conversation tags, and payment records, enabling seamless synchronization with external CRMs and ERPs.",
+      },
+      {
+        question: "What documentation is provided for developers?",
+        answer:
+          "Full OpenAPI / Swagger documentation is available in your workspace settings, complete with code snippets in Python, Node.js, and cURL.",
+      },
+    ],
   },
   {
     slug: "plan-publish",
@@ -902,6 +1057,23 @@ export const FEATURES: FeatureDetail[] = [
         title: "How GTMSip Works",
         description: "Learn how channels, automations, and team inboxes work in 3 steps.",
         href: "/how-it-works",
+      },
+    ],
+    faqs: [
+      {
+        question: "What social channels will Plan & Publish support?",
+        answer:
+          "The initial release will support collaborative scheduling and publishing for WhatsApp marketing broadcasts and Instagram grid and Reel content.",
+      },
+      {
+        question: "Will client approval workflows be supported?",
+        answer:
+          "Yes. Agency teams will be able to share draft calendars with clients for one-click approval or revisions before content is queued for publishing.",
+      },
+      {
+        question: "When will Plan & Publish be available?",
+        answer:
+          "Plan & Publish is currently in active development. You can join our early access waitlist to get priority onboarding and a 50% lifetime launch discount.",
       },
     ],
     status: "soon",
