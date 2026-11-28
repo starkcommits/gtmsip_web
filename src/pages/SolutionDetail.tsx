@@ -60,7 +60,14 @@ export default function SolutionDetail() {
 
       <PageHeader
         eyebrow={solution.eyebrow}
-        title={solution.heroHeadline}
+        title={
+          <>
+            <span className="block text-stone-900 dark:text-white">{solution.title}</span>
+            <span className="mt-2 block text-2xl font-medium text-stone-500 sm:text-3xl dark:text-stone-400">
+              {solution.heroHeadline}
+            </span>
+          </>
+        }
         description={solution.heroTagline}
       >
         <button type="button" onClick={openWaitlistModal} className="btn-primary">

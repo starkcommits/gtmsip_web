@@ -94,9 +94,9 @@ export default function UseCases() {
   const breadcrumbs = [{ name: "Use cases", path: "/use-cases" }];
 
   usePageMeta({
-    title: "Use Cases — Lead Gen, Agencies, D2C, Education & Services | GTMSip",
+    title: "Use Cases: Lead Gen, Agencies, D2C & High-Ticket Sales | GTMSip",
     description:
-    "Explore how sales teams, agencies, D2C e-commerce, and education brands scale with GTMSip's AI lead scraping, WhatsApp CRM, and Instagram comment automation.",
+      "See how B2B sales teams, marketing agencies, D2C e-commerce, and education companies scale revenue with GTMSip AI lead scraping and WhatsApp automation.",
     canonicalUrl: "/use-cases",
     jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });

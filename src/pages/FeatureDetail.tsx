@@ -23,10 +23,10 @@ export default function FeatureDetail() {
 
   usePageMeta({
     title: feature
-      ? `${feature.title} — GTMSip`
+      ? (feature.metaTitle ?? `${feature.title} — GTMSip`)
       : "Feature not found — GTMSip",
     description: feature
-      ? feature.summary
+      ? (feature.metaDescription ?? feature.summary)
       : "This GTMSip feature page could not be found.",
     canonicalUrl: `/features/${slug}`,
     jsonLd: feature
@@ -37,7 +37,7 @@ export default function FeatureDetail() {
           "@type": "SoftwareApplication",
           name: `GTMSip — ${feature.title}`,
           applicationCategory: "BusinessApplication",
-          description: feature.summary,
+          description: feature.metaDescription ?? feature.summary,
           operatingSystem: "Web",
         },
       ]
@@ -57,7 +57,7 @@ export default function FeatureDetail() {
       <PageHeader
         eyebrow="Feature"
         comingSoon={isSoon}
-        title={feature.title}
+        title={feature.h1Heading ?? feature.title}
         description={feature.tagline}
       >
         <button type="button" onClick={openWaitlistModal} className="btn-primary">

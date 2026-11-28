@@ -45,6 +45,9 @@ export interface FeatureDetail {
   navLabel: string;
   title: string;
   tagline: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  h1Heading?: string;
   icon: IconType;
   preview: PreviewKey;
   summary: string;
@@ -61,6 +64,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "AI Workflows & Claude MCP",
     title: "AI Workflows & Claude MCP",
     tagline: "Wire your AI assistants into sales — MCP, automations and human handoffs in one place.",
+    metaTitle: "AI Sales Workflow Automation & Claude MCP Platform | GTMSip",
+    metaDescription:
+      "Automate sales workflows with AI: connect Claude via Model Context Protocol (MCP), chain scrape-to-enrich steps, and orchestrate human-in-the-loop handoffs.",
+    h1Heading: "AI Sales Workflows & Claude MCP Automation",
     icon: WorkflowIcon,
     preview: "integrations",
     summary:
@@ -125,6 +132,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Lead Scraping & Google Plugins",
     title: "Lead Scraping with Firecrawl & Google Plugins",
     tagline: "Find leads on the web, store them where your team already works.",
+    metaTitle: "B2B Lead Scraping Software with Firecrawl & AI | GTMSip",
+    metaDescription:
+      "Scrape B2B lead lists with Firecrawl web extraction, enrich data with AI, and sync verified accounts directly into Google Sheets, Drive, and your CRM pipeline.",
+    h1Heading: "B2B Lead Scraping with Firecrawl & Google Workspace",
     icon: ChartIcon,
     preview: "pipeline",
     summary:
@@ -189,6 +200,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "WhatsApp CRM & Shared Inbox",
     title: "WhatsApp CRM & Shared Team Inbox",
     tagline: "Every WhatsApp conversation, one shared workspace with full contact context.",
+    metaTitle: "WhatsApp CRM & Multi-Agent Shared Team Inbox | GTMSip",
+    metaDescription:
+      "Route WhatsApp customer chats to teammates, prevent collision, track deal stages, and view full CRM context in one shared inbox built on the Meta Cloud API.",
+    h1Heading: "WhatsApp CRM & Multi-Agent Shared Team Inbox",
     icon: InboxIcon,
     preview: "inbox",
     summary:
@@ -262,6 +277,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Broadcasts & Drip Flows",
     title: "Broadcasts & Automated Drip Flows",
     tagline: "Segmented template broadcasts and multi-step follow-ups on autopilot.",
+    metaTitle: "WhatsApp Broadcast Software & Drip Automation | GTMSip",
+    metaDescription:
+      "Send approved WhatsApp template broadcasts to targeted audiences, run automated multi-step drip sequences, and trigger agent handoffs on customer replies.",
+    h1Heading: "WhatsApp Broadcast Software & Automated Drip Sequences",
     icon: ZapIcon,
     preview: "broadcast",
     summary:
@@ -335,6 +354,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Instagram Comment-to-DM",
     title: "Instagram Comment-to-DM & Inbox",
     tagline: "Turn post comments into private DM conversations — and leads.",
+    metaTitle: "Instagram Comment to DM Automation & Social CRM | GTMSip",
+    metaDescription:
+      "Automatically reply to Instagram post and Reel comments, send instant private DMs, capture leads into your CRM, and manage conversations in one unified inbox.",
+    h1Heading: "Instagram Comment-to-DM & Social Sales Automation",
     icon: CameraIcon,
     preview: "commentDm",
     summary:
@@ -417,6 +440,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Leads, Pipelines & Payments",
     title: "Leads, Deal Pipelines & Razorpay Payments",
     tagline: "From first message to paid invoice — pipeline and payments in one place.",
+    metaTitle: "Visual CRM Deal Pipelines & In-Chat Payments | GTMSip",
+    metaDescription:
+      "Track sales leads across visual drag-and-drop pipeline stages, generate Razorpay payment links directly in chat, and automatically reconcile paid transactions.",
+    h1Heading: "Visual Deal Pipelines & In-Chat Razorpay Payments",
     icon: TagIcon,
     preview: "pipeline",
     summary:
@@ -486,6 +513,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Analytics & Meta Ads",
     title: "Analytics & Meta Ads Attribution",
     tagline: "Response metrics for your team, and ad-to-conversation reporting from Meta.",
+    metaTitle: "WhatsApp & Meta Ads Attribution Analytics | GTMSip",
+    metaDescription:
+      "Monitor team response times, resolution rates, and conversation-to-revenue ROI with official Meta Marketing API attribution beside live customer conversations.",
+    h1Heading: "Team Inbox Analytics & Meta Ads Attribution",
     icon: ChartIcon,
     preview: "analytics",
     summary:
@@ -555,6 +586,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Teams, Roles & Workspaces",
     title: "Teams, Roles & Multi-Brand Workspaces",
     tagline: "Owner, Admin and Agent roles across separate brand workspaces.",
+    metaTitle: "Multi-Tenant Agency Workspaces & Role-Based CRM | GTMSip",
+    metaDescription:
+      "Manage multiple client brands with strict workspace isolation, custom roles (Owner, Admin, Agent), and per-brand reporting tailored for agencies and teams.",
+    h1Heading: "Multi-Brand Workspaces & Role-Based Access Control",
     icon: UsersIcon,
     preview: "team",
     summary:
@@ -624,6 +659,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Integrations, Webhooks & API",
     title: "Integrations, Webhooks & API / MCP",
     tagline: "Signed webhooks, a REST API and an MCP endpoint for your own stack.",
+    metaTitle: "B2B Sales Webhooks, Scoped REST API & Claude MCP | GTMSip",
+    metaDescription:
+      "Connect external CRMs and databases with HMAC-signed webhooks, scoped REST APIs, and an official Model Context Protocol (MCP) server for Claude AI assistants.",
+    h1Heading: "Developer Webhooks, Scoped REST APIs & Claude MCP",
     icon: PlugIcon,
     preview: "integrations",
     summary:
@@ -693,6 +732,10 @@ export const FEATURES: FeatureDetail[] = [
     navLabel: "Plan & Publish",
     title: "Plan & Publish",
     tagline: "Multi-channel content calendar with an approval queue.",
+    metaTitle: "Social Content Calendar & Multi-Channel Publishing | GTMSip",
+    metaDescription:
+      "Plan, review, and schedule social content across WhatsApp and Instagram from a collaborative calendar workspace with client approvals. Coming soon to GTMSip.",
+    h1Heading: "Social Content Planning & Multi-Channel Publishing",
     icon: CalendarIcon,
     preview: "calendar",
     summary:

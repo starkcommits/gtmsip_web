@@ -14,9 +14,9 @@ export default function About() {
   const breadcrumbs = [{ name: "About & Contact", path: "/about" }];
 
   usePageMeta({
-    title: "About GTMSip & Contact Us — The Unified AI Sales Workspace",
+    title: "About GTMSip — Building the Modern AI Sales Workspace",
     description:
-    "Why GTMSip exists, our mission, how to reach our team, and how we build compliant sales automation across official Meta business APIs.",
+      "Meet the team behind GTMSip. We are building the unified AI sales platform connecting lead scraping, Claude MCP workflows, and Meta business messaging.",
     canonicalUrl: "/about",
     jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });

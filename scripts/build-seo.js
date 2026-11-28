@@ -125,6 +125,7 @@ const ROUTES = [
     priority: '0.8',
     changefreq: 'weekly',
     title: 'Features Hub — All 10 Modules | GTMSip AI Sales & Social Platform',
+    h1: 'Features Hub: All 10 Modules for AI Sales & Messaging',
     description:
       'Explore every GTMSip module: Firecrawl lead scraping, Google plugins, AI workflows and Claude MCP, shared WhatsApp & Instagram inbox, broadcasts, comment-to-DM, pipelines with Razorpay, and workspaces.',
     ogType: 'website',
@@ -133,90 +134,100 @@ const ROUTES = [
     path: '/features/ai-workflows-mcp',
     priority: '0.8',
     changefreq: 'weekly',
-    title: 'AI Workflows & Claude MCP — GTMSip',
+    title: 'AI Sales Workflow Automation & Claude MCP Platform | GTMSip',
+    h1: 'AI Sales Workflows & Claude MCP Automation',
     description:
-      'Expose leads, conversations and payments to approved AI assistants over MCP, and chain scrape → enrich → follow-up steps into AI workflows.',
+      'Automate sales workflows with AI: connect Claude via Model Context Protocol (MCP), chain scrape-to-enrich steps, and orchestrate human-in-the-loop handoffs.',
     ogType: 'website',
   },
   {
     path: '/features/lead-scraping-firecrawl',
     priority: '0.8',
     changefreq: 'weekly',
-    title: 'Lead Scraping with Firecrawl & Google Plugins — GTMSip',
+    title: 'B2B Lead Scraping Software with Firecrawl & AI | GTMSip',
+    h1: 'B2B Lead Scraping with Firecrawl & Google Workspace',
     description:
-      'Scrape targeted lead lists with Firecrawl, enrich them with AI, and store the results in Google Sheets, Drive and your deal pipeline — no copy-paste.',
+      'Scrape B2B lead lists with Firecrawl web extraction, enrich data with AI, and sync verified accounts directly into Google Sheets, Drive, and your CRM pipeline.',
     ogType: 'website',
   },
   {
     path: '/features/whatsapp-crm-inbox',
     priority: '0.8',
     changefreq: 'weekly',
-    title: 'WhatsApp CRM & Shared Team Inbox — GTMSip',
+    title: 'WhatsApp CRM & Multi-Agent Shared Team Inbox | GTMSip',
+    h1: 'WhatsApp CRM & Multi-Agent Shared Team Inbox',
     description:
-      'Route WhatsApp chats to the right teammate, with CRM tags, notes and payment context on every thread.',
+      'Route WhatsApp customer chats to teammates, prevent collision, track deal stages, and view full CRM context in one shared inbox built on the Meta Cloud API.',
     ogType: 'website',
   },
   {
     path: '/features/broadcasts-drip-flows',
     priority: '0.7',
     changefreq: 'weekly',
-    title: 'Broadcasts & Automated Drip Flows — GTMSip',
+    title: 'WhatsApp Broadcast Software & Drip Automation | GTMSip',
+    h1: 'WhatsApp Broadcast Software & Automated Drip Sequences',
     description:
-      'Send approved WhatsApp broadcasts to opted-in audiences and trigger multi-step drip flows that branch on replies or opt-outs.',
+      'Send approved WhatsApp template broadcasts to targeted audiences, run automated multi-step drip sequences, and trigger agent handoffs on customer replies.',
     ogType: 'website',
   },
   {
     path: '/features/instagram-comment-to-dm',
     priority: '0.8',
     changefreq: 'weekly',
-    title: 'Instagram Comment-to-DM & Inbox — GTMSip',
+    title: 'Instagram Comment to DM Automation & Social CRM | GTMSip',
+    h1: 'Instagram Comment-to-DM & Social Sales Automation',
     description:
-      'Reply publicly to comments on Reels and posts, send instant private DMs, and capture leads into your CRM — all inside Meta rules.',
+      'Automatically reply to Instagram post and Reel comments, send instant private DMs, capture leads into your CRM, and manage conversations in one unified inbox.',
     ogType: 'website',
   },
   {
     path: '/features/leads-pipelines-payments',
     priority: '0.7',
     changefreq: 'weekly',
-    title: 'Leads, Deal Pipelines & Razorpay Payments — GTMSip',
+    title: 'Visual CRM Deal Pipelines & In-Chat Payments | GTMSip',
+    h1: 'Visual Deal Pipelines & In-Chat Razorpay Payments',
     description:
-      'Drag-and-drop deal stages with conversation history attached and Razorpay payment links that update deal status in real time.',
+      'Track sales leads across visual drag-and-drop pipeline stages, generate Razorpay payment links directly in chat, and automatically reconcile paid transactions.',
     ogType: 'website',
   },
   {
     path: '/features/analytics-meta-ads',
     priority: '0.7',
     changefreq: 'weekly',
-    title: 'Analytics & Meta Ads Attribution — GTMSip',
+    title: 'WhatsApp & Meta Ads Attribution Analytics | GTMSip',
+    h1: 'Team Inbox Analytics & Meta Ads Attribution',
     description:
-      'Track first-response times, resolution rates and ad attribution via Meta marketing APIs — beside the conversations they generated.',
+      'Monitor team response times, resolution rates, and conversation-to-revenue ROI with official Meta Marketing API attribution beside live customer conversations.',
     ogType: 'website',
   },
   {
     path: '/features/teams-roles-workspaces',
     priority: '0.7',
     changefreq: 'weekly',
-    title: 'Teams, Roles & Multi-Brand Workspaces — GTMSip',
+    title: 'Multi-Tenant Agency Workspaces & Role-Based CRM | GTMSip',
+    h1: 'Multi-Brand Workspaces & Role-Based Access Control',
     description:
-      'Manage multiple client brands from one login with strict workspace isolation, custom roles and per-brand reporting.',
+      'Manage multiple client brands with strict workspace isolation, custom roles (Owner, Admin, Agent), and per-brand reporting tailored for agencies and teams.',
     ogType: 'website',
   },
   {
     path: '/features/integrations-api',
     priority: '0.7',
     changefreq: 'weekly',
-    title: 'Integrations, Webhooks & API / MCP — GTMSip',
+    title: 'B2B Sales Webhooks, Scoped REST API & Claude MCP | GTMSip',
+    h1: 'Developer Webhooks, Scoped REST APIs & Claude MCP',
     description:
-      'Connect external tools with HMAC-signed webhooks, scoped REST APIs and a Claude Model Context Protocol (MCP) endpoint.',
+      'Connect external CRMs and databases with HMAC-signed webhooks, scoped REST APIs, and an official Model Context Protocol (MCP) server for Claude AI assistants.',
     ogType: 'website',
   },
   {
     path: '/features/plan-publish',
     priority: '0.6',
     changefreq: 'monthly',
-    title: 'Plan & Publish (In Development) — GTMSip',
+    title: 'Social Content Calendar & Multi-Channel Publishing | GTMSip',
+    h1: 'Social Content Planning & Multi-Channel Publishing',
     description:
-      'Social content calendar and publishing workspace coming soon to GTMSip. Join the early access waitlist.',
+      'Plan, review, and schedule social content across WhatsApp and Instagram from a collaborative calendar workspace with client approvals. Coming soon to GTMSip.',
     ogType: 'website',
   },
 
@@ -225,45 +236,50 @@ const ROUTES = [
     path: '/how-it-works',
     priority: '0.7',
     changefreq: 'monthly',
-    title: 'How It Works — AI Sales & Social Platform in 3 Steps | GTMSip',
+    title: 'How GTMSip Works: AI Sales Automation & Meta CRM Architecture',
+    h1: 'How GTMSip Works: AI Sales Automation & Meta CRM Architecture',
     description:
-      'Learn how GTMSip works: connect your official Meta channels, automate workflows with Firecrawl and Google plugins, and manage sales in a unified team inbox.',
+      'Discover how GTMSip connects official Meta Business APIs, Firecrawl web scraping, Claude MCP workflows, and shared team inboxes into a 3-step sales engine.',
     ogType: 'website',
   },
   {
     path: '/use-cases',
     priority: '0.7',
     changefreq: 'monthly',
-    title: 'Use Cases — Lead Gen, Agencies, D2C, Education & Services | GTMSip',
+    title: 'Use Cases: Lead Gen, Agencies, D2C & High-Ticket Sales | GTMSip',
+    h1: 'Use Cases: Lead Gen, Agencies, D2C & High-Ticket Sales',
     description:
-      'Explore how sales teams, agencies, D2C e-commerce, and education brands scale with GTMSip AI lead scraping, WhatsApp CRM, and Instagram comment automation.',
+      'See how B2B sales teams, marketing agencies, D2C e-commerce, and education brands scale revenue with GTMSip AI lead scraping and WhatsApp automation.',
     ogType: 'website',
   },
   {
     path: '/pricing',
     priority: '0.7',
     changefreq: 'monthly',
-    title: 'Pricing Plans — Starter, Growth & Agency Tiers | GTMSip',
+    title: 'GTMSip Pricing: Transparent Plans for Teams & Agencies',
+    h1: 'GTMSip Pricing: Transparent Plans for Teams & Agencies',
     description:
-      'Compare GTMSip tiers — Starter, Growth, and Agency. Transparent feature breakdown including WhatsApp CRM, AI workflows, broadcasts, and deal pipelines.',
+      'Explore GTMSip pricing plans: Starter, Growth, and Agency tiers. Transparent pricing for WhatsApp CRM, AI workflows, broadcasts, and deal pipeline management.',
     ogType: 'website',
   },
   {
     path: '/security',
     priority: '0.7',
     changefreq: 'monthly',
-    title: 'Security & Trust — Platform Architecture & Compliance | GTMSip',
+    title: 'Security & Compliance Architecture — SOC-2 Ready | GTMSip',
+    h1: 'Security & Compliance Architecture',
     description:
-      'Inspect GTMSip security architecture: row-level tenant isolation, encrypted tokens, HMAC webhook verification, and official Meta messaging-window compliance.',
+      'Inspect GTMSip security: tenant-isolated database rows, AES-256 encrypted tokens, HMAC-signed webhooks, and official Meta Cloud API compliance guarantees.',
     ogType: 'website',
   },
   {
     path: '/about',
     priority: '0.6',
     changefreq: 'monthly',
-    title: 'About GTMSip & Contact Us — The Unified AI Sales Workspace',
+    title: 'About GTMSip — Building the Modern AI Sales Workspace',
+    h1: 'About GTMSip — Building the Modern AI Sales Workspace',
     description:
-      'Why GTMSip exists, our mission, how to reach our team, and how we build compliant sales automation across official Meta business APIs.',
+      'Meet the team behind GTMSip. We are building the unified AI sales platform connecting lead scraping, Claude MCP workflows, and Meta business messaging.',
     ogType: 'website',
   },
 
@@ -357,7 +373,7 @@ function run() {
 
       const semanticFallback = `<div id="root">
     <div class="sr-only">
-      <h1>Automate Your Sales, Marketing &amp; Customer Engagement with AI</h1>
+      <h1>Find leads with AI. Close deals in one sales &amp; marketing workspace.</h1>
       <p>GTMSip is the AI-driven sales and marketing automation platform: Firecrawl lead scraping, Google plugins for data storage, Claude MCP workflows, and shared WhatsApp &amp; Instagram inbox to close deals.</p>
       <nav aria-label="Solutions and Key Sections">
         <ul>
@@ -434,9 +450,10 @@ function run() {
         );
 
         // Inject page-specific semantic H1 and links
+        const pageH1 = route.h1 || route.title.replace(/ (\||—|–) GTMSip.*$/, '');
         const pageFallback = `<div id="root">
     <div class="sr-only">
-      <h1>${route.title}</h1>
+      <h1>${pageH1}</h1>
       <p>${route.description}</p>
       <nav aria-label="Main Navigation">
         <a href="/">Home</a>
