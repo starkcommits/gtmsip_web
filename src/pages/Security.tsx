@@ -49,9 +49,9 @@ export default function Security() {
   const breadcrumbs = [{ name: "Security & Trust", path: "/security" }];
 
   usePageMeta({
-    title: "Security & Trust — Platform Architecture & Compliance | GTMSip",
+    title: "Security & Compliance Architecture — SOC-2 Ready | GTMSip",
     description:
-    "Inspect GTMSip's security architecture: row-level tenant isolation, encrypted tokens, HMAC webhook verification, and official Meta messaging-window compliance.",
+      "Inspect GTMSip security: tenant-isolated database rows, AES-256 encrypted tokens, HMAC-signed webhooks, and official Meta Cloud API compliance guarantees.",
     canonicalUrl: "/security",
     jsonLd: [buildBreadcrumbsSchema(breadcrumbs)],
   });

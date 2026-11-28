@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getBlogPost, BLOG_POSTS } from "../data/blog";
 import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
@@ -5,6 +6,60 @@ import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand } from "../components/ui";
 import { openWaitlistModal } from "../lib/waitlist";
 import { ArrowRightIcon, CheckIcon, AlertIcon } from "../components/icons";
+
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+}
+
+function renderContentWithLinks(text: string): ReactNode {
+  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const linkText = match[1];
+    const href = match[2];
+    const isInternal = href.startsWith("/");
+
+    if (isInternal) {
+      parts.push(
+        <Link
+          key={match.index}
+          to={href}
+          className="font-medium text-brand-600 underline decoration-brand-500/40 underline-offset-2 hover:text-brand-700 hover:decoration-brand-500 dark:text-brand-400 dark:decoration-brand-400/40 dark:hover:text-brand-300"
+        >
+          {linkText}
+        </Link>,
+      );
+    } else {
+      parts.push(
+        <a
+          key={match.index}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-brand-600 underline decoration-brand-500/40 underline-offset-2 hover:text-brand-700 hover:decoration-brand-500 dark:text-brand-400 dark:decoration-brand-400/40 dark:hover:text-brand-300"
+        >
+          {linkText}
+        </a>,
+      );
+    }
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+}
 
 export default function BlogPost() {
   const { slug = "" } = useParams();
@@ -110,7 +165,7 @@ export default function BlogPost() {
       {/* Article Content Layout */}
       <article className="container-x max-w-4xl pb-16">
         {/* Key Takeaways Box */}
-        <aside className="mb-12 rounded-2xl border border-brand-200 bg-brand-50/70 p-6 dark:border-brand-400/20 dark:bg-brand-400/5">
+        <aside className="mb-10 rounded-2xl border border-brand-200 bg-brand-50/70 p-6 dark:border-brand-400/20 dark:bg-brand-400/5">
           <p className="font-mono text-xs font-bold uppercase tracking-wider text-brand-800 dark:text-brand-300">
             Executive Summary & Key Takeaways
           </p>
@@ -126,34 +181,67 @@ export default function BlogPost() {
           </ul>
         </aside>
 
+        {/* Table of Contents */}
+        <nav
+          aria-label="Table of Contents"
+          className="mb-12 rounded-2xl border border-stone-200 bg-stone-50/80 p-6 dark:border-white/10 dark:bg-white/[0.03]"
+        >
+          <p className="font-mono text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white">
+            Table of Contents
+          </p>
+          <ol className="mt-4 space-y-2.5 text-sm">
+            {post.sections.map((section, idx) => {
+              const anchor = slugify(section.heading);
+              return (
+                <li key={idx}>
+                  <a
+                    href={`#${anchor}`}
+                    className="group flex items-baseline gap-2.5 text-stone-600 transition-colors hover:text-brand-600 dark:text-stone-400 dark:hover:text-brand-400"
+                  >
+                    <span className="font-mono text-xs font-semibold text-stone-400 group-hover:text-brand-500 dark:text-stone-500">
+                      {String(idx + 1).padStart(2, "0")}.
+                    </span>
+                    <span className="underline-offset-4 group-hover:underline">
+                      {section.heading}
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
+
         {/* Sections */}
         <div className="prose-legal space-y-10 text-[16px] leading-relaxed text-stone-700 dark:text-stone-300">
-          {post.sections.map((section, idx) => (
-            <section key={idx} className="space-y-4">
-              <h2 className="text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
-                {section.heading}
-              </h2>
+          {post.sections.map((section, idx) => {
+            const sectionId = slugify(section.heading);
+            return (
+              <section key={idx} id={sectionId} className="scroll-mt-24 space-y-4">
+                <h2 className="text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
+                  {section.heading}
+                </h2>
 
-              {section.paragraphs.map((p, pIdx) => (
-                <p key={pIdx}>{p}</p>
-              ))}
+                {section.paragraphs.map((p, pIdx) => (
+                  <p key={pIdx}>{renderContentWithLinks(p)}</p>
+                ))}
 
-              {section.callout && (
-                <div
-                  className={`mt-4 rounded-xl border p-4 text-sm leading-relaxed ${
-                    section.callout.type === "warning"
-                      ? "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-200"
-                      : "border-brand-200 bg-brand-50 text-brand-900 dark:border-brand-400/20 dark:bg-brand-400/10 dark:text-brand-200"
-                  }`}
-                >
-                  <p className="font-bold flex items-center gap-1.5 mb-1">
-                    {section.callout.type === "warning" ? "⚠️ Caution:" : "💡 Pro Tip:"}
-                  </p>
-                  <p>{section.callout.text}</p>
-                </div>
-              )}
-            </section>
-          ))}
+                {section.callout && (
+                  <div
+                    className={`mt-4 rounded-xl border p-4 text-sm leading-relaxed ${
+                      section.callout.type === "warning"
+                        ? "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-200"
+                        : "border-brand-200 bg-brand-50 text-brand-900 dark:border-brand-400/20 dark:bg-brand-400/10 dark:text-brand-200"
+                    }`}
+                  >
+                    <p className="font-bold flex items-center gap-1.5 mb-1">
+                      {section.callout.type === "warning" ? "⚠️ Caution:" : "💡 Pro Tip:"}
+                    </p>
+                    <p>{renderContentWithLinks(section.callout.text)}</p>
+                  </div>
+                )}
+              </section>
+            );
+          })}
         </div>
 
         {/* Product Integration Callout Card */}

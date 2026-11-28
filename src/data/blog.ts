@@ -73,7 +73,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Step 1: Connecting Through the Official Meta Cloud API",
         paragraphs: [
           "The official WhatsApp Business Platform operates via direct REST APIs managed by Meta. By verifying your Meta Business Manager and registering a clean phone number, you gain access to enterprise-grade delivery, tier-based sending capacity, and end-to-end encryption guarantees.",
-          "When using a dedicated workspace like GTMSip, onboarding is handled directly through Meta's embedded signup flow. Your credentials remain securely stored under your own Facebook Business portfolio, while your team gains an intuitive multi-agent shared inbox.",
+          "When using a dedicated workspace like GTMSip, onboarding is handled directly through Meta's embedded signup flow. Your credentials remain securely stored under your own Facebook Business portfolio, while your team gains an intuitive [multi-agent shared WhatsApp CRM inbox](/features/whatsapp-crm-inbox).",
         ],
       },
       {
@@ -90,7 +90,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Step 3: Creating High-Converting Approved Templates",
         paragraphs: [
-          "Template messages must fall into one of three official Meta categories: Marketing, Utility, or Authentication. For promotional offers and event announcements, submit marketing templates with explicit personalization variables (e.g. {{1}} for customer name, {{2}} for product interest).",
+          "Template messages must fall into one of three official Meta categories: Marketing, Utility, or Authentication. For promotional offers and event announcements, submit marketing templates with explicit personalization variables (e.g. {{1}} for customer name, {{2}} for product interest), and automate delivery using [WhatsApp broadcast software & drip flows](/features/broadcasts-drip-flows).",
           "Include clear call-to-action (CTA) buttons like 'View Deal' or quick reply buttons like 'Talk to Specialist'. Avoid clickbait language, all-caps words, or misleading claims, which trigger automated rejection by Meta's review engine.",
         ],
       },
@@ -98,7 +98,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Step 4: Managing Opt-Outs & Team Routing",
         paragraphs: [
           "Compliance requires honoring customer opt-outs unconditionally. When a recipient replies 'STOP' or 'UNSUBSCRIBE', GTMSip automatically flags the contact record, suppressing any future broadcasts while preserving historical records for accounting.",
-          "Furthermore, as inbound volume scales, individual reps cannot juggle hundreds of open threads on physical mobile devices. A centralized shared inbox with round-robin assignment, internal tags, and collision detection ensures every lead gets answered within minutes.",
+          "Furthermore, as inbound volume scales, individual reps cannot juggle hundreds of open threads on physical mobile devices. A centralized [WhatsApp shared team inbox](/features/whatsapp-crm-inbox) with round-robin assignment, internal tags, and collision detection ensures every lead gets answered within minutes. Explore our full [WhatsApp marketing software solution](/solutions/whatsapp-marketing) to see it in action.",
         ],
       },
     ],
@@ -146,7 +146,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Layer 1: High-Precision Web Extraction with Firecrawl",
         paragraphs: [
           "Every high-converting sales process begins with targeted data. Rather than purchasing stale, recycled lead databases where contact details are 6 months out of date, modern workflows crawl live web sources.",
-          "Using Firecrawl inside GTMSip, you can point crawlers at live industry directories, client websites, and public business listings. The engine extracts verified company firmographics, contact channels, and executive names with deduplication built in.",
+          "Using [Firecrawl lead scraping software](/features/lead-scraping-firecrawl) inside GTMSip, you can point crawlers at live industry directories, client websites, and public business listings. The engine extracts verified company firmographics, contact channels, and executive names with deduplication built in.",
         ],
       },
       {
@@ -159,8 +159,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Layer 3: Empowering Claude via the Model Context Protocol (MCP)",
         paragraphs: [
-          "Anthropic's Model Context Protocol (MCP) represents an architectural leap for sales tooling. Instead of giving an AI model one-off prompt context, GTMSip provides a dedicated Claude MCP endpoint.",
-          "With MCP, Claude can dynamically query your active deals, pull recent WhatsApp chat history, inspect payment statuses, and propose specific pipeline stage movements. The AI acts as an always-on sales operations partner that possesses deep, real-time awareness of your entire pipeline.",
+          "Anthropic's Model Context Protocol (MCP) represents an architectural leap for sales tooling. Instead of giving an AI model one-off prompt context, GTMSip provides a dedicated [Claude MCP sales automation endpoint](/features/ai-workflows-mcp).",
+          "With MCP, Claude can dynamically query your active deals, pull recent WhatsApp chat history, inspect payment statuses, and propose specific pipeline stage movements. The AI acts as an always-on sales operations partner that possesses deep, real-time awareness of your entire pipeline. Learn more in our [AI sales automation platform guide](/solutions/ai-sales-automation).",
         ],
         callout: {
           type: "note",
@@ -171,7 +171,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Layer 4: Human-in-the-Loop Message Approval",
         paragraphs: [
           "The greatest mistake organizations make with generative AI is allowing completely unsupervised messaging to customers on private channels like WhatsApp or Instagram. Hallucinated pricing or awkward bot replies destroy buyer trust instantly.",
-          "The winning balance is Human-in-the-Loop (HITL). In GTMSip, AI generates highly contextual, personalized response drafts based on previous chat context and CRM fields. Your sales representative reviews the draft in the shared inbox, tweaks the tone if needed, and clicks send in under 5 seconds.",
+          "The winning balance is Human-in-the-Loop (HITL). In GTMSip, AI generates highly contextual, personalized response drafts based on previous chat context and CRM fields. Your sales representative reviews the draft in the [shared team inbox](/features/whatsapp-crm-inbox), tweaks the tone if needed, and clicks send in under 5 seconds.",
         ],
       },
     ],
@@ -219,7 +219,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Automating Extraction with Firecrawl",
         paragraphs: [
           "Firecrawl is an intelligent web scraping engine that converts any website or URL list into clean, structured Markdown and JSON. By bypassing bot traps and rendering client-side JavaScript, it reliably extracts company names, founder bios, support emails, physical addresses, and social profiles.",
-          "In GTMSip, Firecrawl is built right into your pipeline. You define your search parameters—for instance, 'Architectural design studios in Bangalore' or a list of 50 competitor client URLs—and the engine crawls the web and creates structured lead records automatically.",
+          "In GTMSip, [Firecrawl lead scraping software](/features/lead-scraping-firecrawl) is built right into your pipeline. You define your search parameters—for instance, 'Architectural design studios in Bangalore' or a list of 50 competitor client URLs—and the engine crawls the web and creates structured lead records automatically. Learn how this powers end-to-end [B2B lead generation software pipelines](/solutions/lead-generation-software).",
         ],
       },
       {
@@ -232,8 +232,8 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "From Spreadsheet Row to WhatsApp Conversation",
         paragraphs: [
-          "Data in a spreadsheet doesn't generate revenue until outreach occurs. With GTMSip, new rows in Google Sheets trigger immediate routing: high-intent accounts enter a personalized WhatsApp drip flow or land in the shared inbox for direct outbound connection.",
-          "Because the prospect record displays their source URL, company description, and AI-generated talking points, your sales reps can initiate conversations with unmatched relevance.",
+          "Data in a spreadsheet doesn't generate revenue until outreach occurs. With GTMSip, new rows in Google Sheets trigger immediate routing: high-intent accounts enter a personalized [WhatsApp drip sequence](/features/broadcasts-drip-flows) or land in the shared inbox for direct outbound connection.",
+          "Because the prospect record displays their source URL, company description, and AI-generated talking points, your sales reps can manage pipeline stages and attach [in-chat Razorpay payment links](/features/leads-pipelines-payments) with unmatched speed.",
         ],
       },
     ],
@@ -281,7 +281,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "How Comment-to-DM Works Under the Hood",
         paragraphs: [
           "The workflow is triggered by an automated listener connected to Meta's official Instagram Graph API. You publish a post or Reel with a clear call-to-action: 'Comment BLUEPRINT below and I'll send you our 2025 playbook'.",
-          "When a follower comments with that exact keyword, GTMSip executes two synchronized actions in under 3 seconds: first, it posts an algorithmic public reply under the comment ('Sent you a DM! Check your requests 🚀'), and second, it delivers a personalized private DM containing the asset link.",
+          "When a follower comments with that exact keyword, GTMSip executes two synchronized actions in under 3 seconds: first, it posts an algorithmic public reply under the comment ('Sent you a DM! Check your requests 🚀'), and second, it delivers a personalized private DM containing the asset link using [Instagram comment-to-DM automation software](/features/instagram-comment-to-dm).",
         ],
         callout: {
           type: "tip",
@@ -292,14 +292,14 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Meta Compliance: Rules You Must Never Break",
         paragraphs: [
           "Meta strictly regulates Instagram messaging automation to prevent spam. The official policy stipulates that an automated comment trigger can only send exactly one private message in response to a user's comment.",
-          "You cannot repeatedly message a commenter unless they respond to your initial DM. Once the user replies in the DM thread, a 24-hour conversational window opens, allowing your team or your automated drip flow to continue the dialogue legitimately.",
+          "You cannot repeatedly message a commenter unless they respond to your initial DM. Once the user replies in the DM thread, a 24-hour conversational window opens, allowing your team or your automated drip flow to continue the dialogue legitimately under [official Instagram automation rules](/solutions/instagram-automation).",
         ],
       },
       {
         heading: "Closing the Deal in the Shared Inbox",
         paragraphs: [
           "When the follower replies to your direct message, they are automatically created as a contact in your GTMSip CRM. The entire interaction history—which Reel they came from, what keyword they used, and their handle—is attached to the contact record.",
-          "If the prospect asks a question about pricing, delivery, or availability, any available agent in your GTMSip shared inbox can respond instantly and share a Razorpay payment link directly inside the Instagram DM.",
+          "If the prospect asks a question about pricing, delivery, or availability, any available agent in your GTMSip shared inbox can respond instantly and share an [in-chat Razorpay payment link](/features/leads-pipelines-payments) directly inside the Instagram DM.",
         ],
       },
     ],
@@ -347,20 +347,20 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Engagement Latency & Sales Velocity",
         paragraphs: [
           "The critical difference between the two mediums is conversational velocity. An email conversation typically involves a 24-to-48-hour lag between back-and-forth messages. By the time a sales rep answers a question about package tiers, the buyer has moved on.",
-          "WhatsApp conversations occur in real time. Because WhatsApp supports rich media, voice notes, interactive buttons, and in-chat payment links, sales inquiries can be resolved and closed in a single 10-minute session.",
+          "WhatsApp conversations occur in real time. Because WhatsApp supports rich media, voice notes, interactive buttons, and [in-chat Razorpay payment links](/features/leads-pipelines-payments), sales inquiries can be resolved and closed in a single 10-minute session.",
         ],
       },
       {
         heading: "Cost Structure & Economics",
         paragraphs: [
           "Email marketing generally charges a fixed monthly fee based on contact list size, allowing unlimited sends. WhatsApp operates on a conversation-based model managed by Meta, where businesses pay per 24-hour conversation window based on the message category (Marketing, Utility, Service).",
-          "While WhatsApp costs more per sent message than email, the conversion rate is often 5x to 10x higher. For high-ticket consulting, D2C launches, education programs, and qualified B2B pipeline, the Return on Ad Spend (ROAS) on WhatsApp dramatically outpaces email blasts.",
+          "While WhatsApp costs more per sent message than email, the conversion rate is often 5x to 10x higher. For high-ticket consulting, D2C launches, education programs, and qualified B2B pipeline, the Return on Ad Spend (ROAS) on WhatsApp dramatically outpaces email blasts. Discover our [WhatsApp marketing software platform](/solutions/whatsapp-marketing) to forecast ROI.",
         ],
       },
       {
         heading: "The Hybrid Playbook: When to Use Which",
         paragraphs: [
-          "Leading sales organizations don't view this as a zero-sum contest. Instead, they use email for long-form newsletters, terms of service updates, and cold outbound nurture campaigns. They reserve WhatsApp for urgent, high-intent touchpoints: lead qualification, cart abandonment reminders, event reminders, and payment collection.",
+          "Leading sales organizations don't view this as a zero-sum contest. Instead, they use email for long-form newsletters, terms of service updates, and cold outbound nurture campaigns. They reserve WhatsApp for urgent, high-intent touchpoints: lead qualification, cart abandonment reminders, event reminders, and payment collection powered by [automated WhatsApp broadcasts & drip sequences](/features/broadcasts-drip-flows).",
         ],
       },
     ],
@@ -419,14 +419,14 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Branching Logic: Stop Follow-Ups When the Buyer Speaks",
         paragraphs: [
           "There is nothing more embarrassing than an automated bot sending a canned reminder 10 minutes after a customer has already agreed to buy or asked for a custom invoice.",
-          "In GTMSip's visual workflow builder, every drip sequence includes conditional branch checks. The moment an inbound message is received or a deal stage changes to 'Negotiation' or 'Paid', the lead is instantly pulled out of automated drip sequences and assigned to a human teammate.",
+          "In GTMSip's visual workflow builder, every [WhatsApp drip sequence](/features/broadcasts-drip-flows) includes conditional branch checks. The moment an inbound message is received or a deal stage changes to 'Negotiation' or 'Paid', the lead is instantly pulled out of automated sequences and assigned to a human teammate in the [shared team inbox](/features/whatsapp-crm-inbox).",
         ],
       },
       {
         heading: "Putting Context at the Rep's Fingertips",
         paragraphs: [
           "When a prospect finally re-engages on day 6, the sales agent shouldn't have to ask 'Remind me which product you were looking at?'.",
-          "GTMSip pins the entire customer journey right beside the conversation thread: source ad, original keyword comment, clicked broadcast links, and CRM deal status. The rep responds with complete situational mastery, turning a warm inquiry into a closed deal.",
+          "GTMSip pins the entire customer journey right beside the conversation thread: source ad, original keyword comment, clicked broadcast links, and CRM deal status, tracked through [Meta ads attribution analytics](/features/analytics-meta-ads). The rep responds with complete situational mastery, turning a warm inquiry into a closed deal on our [visual deal pipeline](/features/leads-pipelines-payments).",
         ],
       },
     ],

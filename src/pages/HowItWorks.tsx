@@ -49,9 +49,9 @@ export default function HowItWorks() {
   const breadcrumbs = [{ name: "How it works", path: "/how-it-works" }];
 
   usePageMeta({
-    title: "How It Works — AI Sales & Social Platform in 3 Steps | GTMSip",
+    title: "How GTMSip Works: AI Sales Automation & Meta CRM Architecture",
     description:
-    "Learn how GTMSip works: connect your official Meta channels, automate workflows with Firecrawl and Google plugins, and manage sales in a unified team inbox.",
+      "Discover how GTMSip connects official Meta Business APIs, Firecrawl web scraping, Claude MCP workflows, and shared team inboxes into a 3-step sales engine.",
     canonicalUrl: "/how-it-works",
     jsonLd: [
       buildBreadcrumbsSchema(breadcrumbs),

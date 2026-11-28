@@ -124,6 +124,107 @@ export interface PageMetaOptions {
   };
 
   /**
+   * Global SoftwareApplication schema for GTMSip
+   */
+  export const SOFTWARE_APPLICATION_SCHEMA = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/#software`,
+    name: "GTMSip",
+    url: SITE_URL,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web-based, All modern browsers (Chrome, Safari, Firefox, Edge)",
+    description:
+      "AI sales and marketing automation platform connecting Firecrawl lead scraping, Claude MCP workflows, and shared WhatsApp & Instagram inboxes.",
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "USD",
+      lowPrice: "49",
+      highPrice: "299",
+      offerCount: "3",
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Starter Plan",
+          price: "49",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+          url: `${SITE_URL}/pricing`,
+        },
+        {
+          "@type": "Offer",
+          name: "Growth Plan",
+          price: "129",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+          url: `${SITE_URL}/pricing`,
+        },
+        {
+          "@type": "Offer",
+          name: "Agency Plan",
+          price: "299",
+          priceCurrency: "USD",
+          availability: "https://schema.org/PreOrder",
+          url: `${SITE_URL}/pricing`,
+        },
+      ],
+    },
+    featureList: [
+      "Firecrawl B2B Lead Scraping",
+      "Claude Model Context Protocol (MCP) Integration",
+      "Official Meta Cloud API WhatsApp CRM",
+      "Instagram Comment-to-DM Automation",
+      "Automated Broadcast & Drip Campaign Sequences",
+      "Visual Deal Pipelines with In-Chat Razorpay Payments",
+      "Multi-Tenant Agency Workspaces",
+    ],
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+  };
+
+  /**
+   * HowTo step item interface
+   */
+  export interface HowToStepItem {
+    name: string;
+    text: string;
+    url?: string;
+    imageUrl?: string;
+  }
+
+  /**
+   * Builds standard Schema.org HowTo JSON-LD
+   */
+  export function buildHowToSchema({
+    name,
+    description,
+    steps,
+    totalTime,
+  }: {
+    name: string;
+    description: string;
+    steps: HowToStepItem[];
+    totalTime?: string;
+  }) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name,
+      description,
+      ...(totalTime ? { totalTime } : {}),
+      step: steps.map((s, index) => ({
+        "@type": "HowToStep",
+        position: index + 1,
+        name: s.name,
+        text: s.text,
+        ...(s.url ? { url: s.url.startsWith("http") ? s.url : `${SITE_URL}${s.url}` } : {}),
+        ...(s.imageUrl ? { image: s.imageUrl.startsWith("http") ? s.imageUrl : `${SITE_URL}${s.imageUrl}` } : {}),
+      })),
+    };
+  }
+
+  /**
    * Sets document title, canonical link, meta description, robots directive,
    * Open Graph, Twitter cards, and JSON-LD structured data for the current route.
    */

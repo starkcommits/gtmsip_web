@@ -1,9 +1,10 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { usePageMeta, buildBreadcrumbsSchema } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema, buildFaqSchema } from "../lib/seo";
 import { FEATURES, getFeature } from "../data/features";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { ComingSoon, CtaBand, PageHeader } from "../components/ui";
 import { Mockup } from "../components/mockups";
+import { Accordion } from "../components/Accordion";
 import { WaitlistForm } from "../components/forms/WaitlistForm";
 import { openWaitlistModal } from "../lib/waitlist";
 import {
@@ -23,10 +24,10 @@ export default function FeatureDetail() {
 
   usePageMeta({
     title: feature
-      ? `${feature.title} — GTMSip`
+      ? (feature.metaTitle ?? `${feature.title} — GTMSip`)
       : "Feature not found — GTMSip",
     description: feature
-      ? feature.summary
+      ? (feature.metaDescription ?? feature.summary)
       : "This GTMSip feature page could not be found.",
     canonicalUrl: `/features/${slug}`,
     jsonLd: feature
@@ -37,9 +38,12 @@ export default function FeatureDetail() {
           "@type": "SoftwareApplication",
           name: `GTMSip — ${feature.title}`,
           applicationCategory: "BusinessApplication",
-          description: feature.summary,
+          description: feature.metaDescription ?? feature.summary,
           operatingSystem: "Web",
         },
+        ...(feature.faqs && feature.faqs.length > 0
+          ? [buildFaqSchema(feature.faqs)]
+          : []),
       ]
       : undefined,
   });
@@ -57,7 +61,7 @@ export default function FeatureDetail() {
       <PageHeader
         eyebrow="Feature"
         comingSoon={isSoon}
-        title={feature.title}
+        title={feature.h1Heading ?? feature.title}
         description={feature.tagline}
       >
         <button type="button" onClick={openWaitlistModal} className="btn-primary">
@@ -179,6 +183,68 @@ export default function FeatureDetail() {
                               </div>
                           </div>
                         </section>
+      )}
+
+      {/* Frequently Asked Questions (FAQ) */}
+      {feature.faqs && feature.faqs.length > 0 && (
+        <section className="section border-b border-stone-200 dark:border-white/10" aria-labelledby="faq-title">
+          <div className="container-x max-w-4xl">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+              Frequently Asked Questions
+            </span>
+            <h2 id="faq-title" className="mt-2 text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
+              Everything you need to know about {feature.title.toLowerCase()}
+            </h2>
+            <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+              Detailed technical answers regarding Meta compliance, API boundaries, and workflow integration.
+            </p>
+            <div className="mt-8">
+              <Accordion items={feature.faqs} />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related Solutions & Strategic Guides (Topic Cluster) */}
+      {feature.relatedLinks && feature.relatedLinks.length > 0 && (
+        <section className="section border-b border-stone-200 dark:border-white/10" aria-labelledby="related-links-title">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
+                Connected Solutions & Playbooks
+              </span>
+              <h2 id="related-links-title" className="mt-2 text-2xl font-extrabold text-stone-900 dark:text-white sm:text-3xl">
+                Explore related workflows
+              </h2>
+              <p className="mt-2 text-sm text-stone-600 dark:text-stone-400">
+                See how {feature.title.toLowerCase()} integrates into broader business automation architectures.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              {feature.relatedLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="group rounded-2xl border border-stone-200 bg-white p-6 transition-all hover:border-brand-500/50 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-brand-400/40"
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-base font-extrabold text-stone-900 group-hover:text-brand-600 dark:text-white dark:group-hover:text-brand-400 transition-colors">
+                      {link.title}
+                    </h3>
+                    <ArrowRightIcon
+                      size={16}
+                      className="text-stone-400 transition-transform group-hover:translate-x-1 group-hover:text-brand-500"
+                    />
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-600 dark:text-stone-400">
+                    {link.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
 
                         {/* Next feature */}

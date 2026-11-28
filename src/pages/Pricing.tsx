@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { usePageMeta, buildBreadcrumbsSchema, buildFaqSchema } from "../lib/seo";
+import { usePageMeta, buildBreadcrumbsSchema, buildFaqSchema, SOFTWARE_APPLICATION_SCHEMA } from "../lib/seo";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { CtaBand, PageHeader } from "../components/ui";
 import { Accordion } from "../components/Accordion";
@@ -81,13 +81,14 @@ export default function Pricing() {
   const breadcrumbs = [{ name: "Pricing", path: "/pricing" }];
 
   usePageMeta({
-    title: "Pricing Plans — Starter, Growth & Agency Tiers | GTMSip",
+    title: "GTMSip Pricing: Transparent Plans for Teams & Agencies",
     description:
-    "Compare GTMSip tiers — Starter, Growth, and Agency. Transparent feature breakdown including WhatsApp CRM, AI workflows, broadcasts, and deal pipelines.",
+      "Explore GTMSip pricing plans: Starter, Growth, and Agency tiers. Transparent pricing for WhatsApp CRM, AI workflows, broadcasts, and deal pipeline management.",
     canonicalUrl: "/pricing",
     jsonLd: [
       buildBreadcrumbsSchema(breadcrumbs),
       buildFaqSchema(PRICING_FAQ),
+      SOFTWARE_APPLICATION_SCHEMA,
     ],
   });
 

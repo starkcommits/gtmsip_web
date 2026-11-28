@@ -27,7 +27,7 @@ const TITLE: TitleWord[] = [
 function AnimatedTitle() {
   return (
     <h1 className="text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-      <span className="sr-only">Find leads with AI. Close deals in one workspace.</span>
+      <span className="sr-only">Find leads with AI. Close deals in one sales & marketing workspace.</span>
       <span aria-hidden="true">
         {TITLE.map((word, wordIdx) => (
           <span
