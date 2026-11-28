@@ -15,6 +15,7 @@ const SECTIONS = [
 /**
  * Thin scroll-progress bar (under the navbar) + a section indicator
  * pinned to the right edge of the viewport (desktop only).
+ * Uses passive scroll events with RAF debouncing to eliminate forced reflows.
  */
 export function ScrollChrome() {
   const barRef = useRef<HTMLDivElement>(null);
@@ -23,28 +24,40 @@ export function ScrollChrome() {
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
-    let raf = 0;
+    if (typeof window === "undefined" || window.innerWidth < 1024) return;
 
-    const tick = () => {
-      raf = requestAnimationFrame(tick);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const p = max > 0 ? window.scrollY / max : 0;
-      if (barRef.current) {
-        barRef.current.style.transform = `scaleX(${Math.min(1, Math.max(0, p))})`;
-      }
-      setVisible(window.scrollY > window.innerHeight * 0.6);
+    let ticking = false;
 
-      // active section = last section whose top passed the midpoint
-      const mid = window.scrollY + window.innerHeight * 0.4;
-      let current = SECTIONS[0].id;
-      for (const s of SECTIONS) {
-        const el = document.getElementById(s.id);
-        if (el && el.offsetTop <= mid) current = s.id;
-      }
-      setActive((prev) => (prev === current ? prev : current));
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const innerHeight = window.innerHeight;
+        const max = document.documentElement.scrollHeight - innerHeight;
+        const p = max > 0 ? scrollY / max : 0;
+
+        if (barRef.current) {
+          barRef.current.style.transform = `scaleX(${Math.min(1, Math.max(0, p))})`;
+        }
+        setVisible(scrollY > innerHeight * 0.6);
+
+        // active section = last section whose top passed the midpoint
+        const mid = scrollY + innerHeight * 0.4;
+        let current = SECTIONS[0].id;
+        for (const s of SECTIONS) {
+          const el = document.getElementById(s.id);
+          if (el && el.offsetTop <= mid) current = s.id;
+        }
+        setActive((prev) => (prev === current ? prev : current));
+        ticking = false;
+      });
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const goTo = (id: string) => {
@@ -85,7 +98,7 @@ export function ScrollChrome() {
                 className={`font-mono text-[9px] font-bold uppercase tracking-[0.16em] transition-all duration-300 ${
                   isActive
                     ? "translate-x-0 text-brand-400 opacity-100"
-                    : "translate-x-1 text-stone-500 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 dark:text-stone-400"
+                    : "translate-x-1 text-stone-600 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 dark:text-stone-400"
                 }`}
               >
                 {s.label}

@@ -71,14 +71,12 @@ export function Hero() {
         ".hero-word-inner",
         {
           yPercent: isMobile ? 0 : 70,
-          filter: isMobile ? "none" : "blur(8px)",
           opacity: isMobile ? 1 : 0,
         },
         {
           yPercent: 0,
-          filter: "blur(0px)",
           opacity: 1,
-          duration: isMobile ? 0.3 : 0.7,
+          duration: isMobile ? 0.3 : 0.65,
           ease: EASE.out,
           stagger: isMobile ? 0 : 0.04,
           delay: introDelay,
@@ -117,7 +115,6 @@ export function Hero() {
         {
           scale: 1.18,
           opacity: 0,
-          filter: "blur(10px)",
           y: -60,
           ease: "power2.in",
           duration: 1,
@@ -162,12 +159,12 @@ export function Hero() {
         </span>
         <span className="absolute right-10 top-24">LATENCY 12ms</span>
         <span className="absolute left-10 bottom-24">WEBHOOK 200</span>
-        <span className="absolute right-10 bottom-24 text-brand-400/70">SCROLL TO SCRUB ▾</span>
+        <span className="absolute right-10 bottom-24 text-brand-600/80 dark:text-brand-400/70">SCROLL TO SCRUB ▾</span>
       </div>
 
       {/* Content */}
       <div className="container-x relative z-10 py-24 text-center">
-        <div ref={contentRef} className="mx-auto max-w-4xl" style={{ willChange: "transform, opacity, filter" }}>
+        <div ref={contentRef} className="mx-auto max-w-4xl" style={{ willChange: "transform, opacity" }}>
           {/* Logo */}
           <div className="hero-stagger relative mx-auto mb-8 flex justify-center">
             <span
@@ -175,15 +172,21 @@ export function Hero() {
               className="absolute inset-0 mx-auto h-24 w-24 rounded-full bg-brand-500/30 blur-2xl"
             />
             <div className="relative flex h-[88px] w-[88px] items-center justify-center rounded-[22px] border border-stone-200/80 bg-white/95 p-3.5 shadow-[0_18px_45px_-18px_rgba(124,58,237,0.25)] ring-1 ring-stone-900/5 backdrop-blur-sm dark:border-white/15 dark:bg-[#121024]/90 dark:shadow-[0_18px_45px_-18px_rgba(46,16,101,0.65)] dark:ring-white/15">
-              <img
-                src={resolved === "dark" ? "/images/symbol-dark-2x.png" : "/images/symbol-light-2x.png"}
-                alt="GTMSip Platform Symbol"
-                width={72}
-                height={72}
-                fetchPriority="high"
-                decoding="async"
-                className="h-full w-full object-contain"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet={resolved === "dark" ? "/images/symbol-dark-2x.webp" : "/images/symbol-light-2x.webp"}
+                />
+                <img
+                  src={resolved === "dark" ? "/images/symbol-dark-2x.png" : "/images/symbol-light-2x.png"}
+                  alt="GTMSip Platform Symbol"
+                  width={72}
+                  height={72}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-full w-full object-contain"
+                />
+              </picture>
             </div>
           </div>
 
@@ -200,7 +203,7 @@ export function Hero() {
           </div>
 
           {/* Subcopy */}
-          <p className="hero-stagger mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-500 sm:text-lg dark:text-stone-400">
+          <p className="hero-stagger mx-auto mt-6 max-w-2xl text-base leading-relaxed text-stone-600 sm:text-lg dark:text-stone-300">
             GTMSip is the AI-driven sales and social platform. Firecrawl scrapes
             lead lists, Google plugins pull and store data in your sheets, and
             Claude MCP wires it all into AI workflows — with a shared WhatsApp

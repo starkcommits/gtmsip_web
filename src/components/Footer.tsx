@@ -163,7 +163,7 @@ export function Footer() {
                   <li key={link.to + link.label}>
                     <Link
                       to={link.to}
-                      className="flex min-h-11 items-center gap-2 py-3 text-[15px] text-stone-500 dark:text-stone-400"
+                      className="flex min-h-11 items-center gap-2 py-3 text-[15px] text-stone-600 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white"
                     >
                       {link.label}
                       {link.soon && <ComingSoon />}
@@ -177,7 +177,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-        <p className="max-w-4xl border-t border-stone-200 pt-8 text-xs leading-relaxed text-stone-400 dark:border-white/10 dark:text-stone-500">
+        <p className="max-w-4xl border-t border-stone-200 pt-8 text-xs leading-relaxed text-stone-600 dark:border-white/10 dark:text-stone-400">
           GTMSip is an independent product and is not affiliated with,
           endorsed, or sponsored by Meta Platforms, Inc. WhatsApp and
           Instagram are trademarks of Meta Platforms, Inc. Prices shown on
@@ -185,7 +185,7 @@ export function Footer() {
         </p>
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-2 px-6 pt-6 pb-6 text-[13px] text-stone-400 dark:text-stone-500 sm:flex-row sm:items-center sm:gap-6 md:px-10">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-2 px-6 pt-6 pb-6 text-[13px] text-stone-600 dark:text-stone-400 sm:flex-row sm:items-center sm:gap-6 md:px-10">
         <p className="font-mono tabular-nums">
           © {year} GTMSip. All rights reserved.
         </p>

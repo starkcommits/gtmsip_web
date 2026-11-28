@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "./icons";
 import { openWaitlistModal } from "../lib/waitlist";
+import { useTheme } from "../lib/theme";
 
 /** Section wrapper with consistent vertical rhythm and container */
 export function Section({
@@ -24,6 +25,7 @@ export function Section({
 
 /** Brand mark — GTMSip network logo */
 export function Logo({ className = "" }: { className?: string }) {
+  const { resolved } = useTheme();
   return (
     <Link
       to="/"
@@ -31,32 +33,29 @@ export function Logo({ className = "" }: { className?: string }) {
       aria-label="GTMSip home"
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-stone-200/80 bg-white/90 p-1 shadow-sm ring-1 ring-black/5 transition-transform duration-300 group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-white/[0.06] dark:shadow-[0_8px_20px_-8px_rgba(46,16,101,0.8)] dark:ring-white/10">
-        <img
-          src="/images/symbol-light.png"
-          alt=""
-          aria-hidden="true"
-          width={32}
-          height={32}
-          className="h-full w-full object-contain dark:hidden"
-        />
-        <img
-          src="/images/symbol-dark.png"
-          alt=""
-          aria-hidden="true"
-          width={32}
-          height={32}
-          className="hidden h-full w-full object-contain dark:block"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcSet={resolved === "dark" ? "/images/symbol-dark.webp" : "/images/symbol-light.webp"}
+          />
+          <img
+            src={resolved === "dark" ? "/images/symbol-dark.png" : "/images/symbol-light.png"}
+            alt=""
+            aria-hidden="true"
+            width={32}
+            height={32}
+            decoding="async"
+            className="h-full w-full object-contain"
+          />
+        </picture>
       </span>
       <img
-        src="/images/logo-light.svg"
+        src={resolved === "dark" ? "/images/logo-dark.svg" : "/images/logo-light.svg"}
         alt="GTMSip"
-        className="h-7 w-auto dark:hidden"
-      />
-      <img
-        src="/images/logo-dark.svg"
-        alt="GTMSip"
-        className="h-7 w-auto hidden dark:block"
+        width={114}
+        height={28}
+        decoding="async"
+        className="h-7 w-auto"
       />
     </Link>
   );

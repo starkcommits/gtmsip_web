@@ -5,6 +5,7 @@ import { prefersReducedMotion } from "../../lib/motion";
  * Custom cursor: a small violet dot + a trailing ring that expands
  * over interactive elements. Disabled for touch pointers and
  * reduced-motion users.
+ * Pauses RAF when stationary to eliminate main-thread CPU consumption.
  */
 export function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -12,6 +13,7 @@ export function Cursor() {
 
   useEffect(() => {
     if (prefersReducedMotion()) return;
+    if (typeof window === "undefined" || window.innerWidth < 1024) return;
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     const dot = dotRef.current;
@@ -24,16 +26,34 @@ export function Cursor() {
     let ry = -100;
     let raf = 0;
     let expanded = false;
+    let ticking = false;
 
     const INTERACTIVE =
       'a, button, [role="button"], summary, .magnetic, .card';
     const FORM_OR_MODAL =
       'input, textarea, select, [contenteditable="true"], [role="dialog"], .modal';
 
+    const tick = () => {
+      rx += (mx - rx) * 0.16;
+      ry += (my - ry) * 0.16;
+      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+
+      if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        ticking = false;
+      }
+    };
+
     const onMove = (e: PointerEvent) => {
       mx = e.clientX;
       my = e.clientY;
       dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
+
+      if (!ticking) {
+        ticking = true;
+        raf = requestAnimationFrame(tick);
+      }
 
       const target = e.target as Element | null;
       const inFormOrModal = Boolean(target?.closest?.(FORM_OR_MODAL));
@@ -53,15 +73,7 @@ export function Cursor() {
       }
     };
 
-    const tick = () => {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
-      raf = requestAnimationFrame(tick);
-    };
-
     window.addEventListener("pointermove", onMove, { passive: true });
-    raf = requestAnimationFrame(tick);
     document.documentElement.classList.add("has-custom-cursor");
 
     return () => {
@@ -71,6 +83,7 @@ export function Cursor() {
     };
   }, []);
 
+  if (typeof window !== "undefined" && window.innerWidth < 1024) return null;
   if (prefersReducedMotion()) return null;
 
   return (

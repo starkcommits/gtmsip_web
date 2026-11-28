@@ -1,0 +1,35 @@
+# GTMSip — AI Sales & Marketing Automation Platform
+
+> GTMSip is an AI-driven sales, marketing automation, and customer engagement platform powered by Claude MCP workflows, Firecrawl lead scraping, and official Meta Business APIs.
+
+## Core Platform & Capabilities
+- [Platform Homepage](https://gtmsip.com/)
+- [All 10 Feature Modules](https://gtmsip.com/features)
+- [How It Works & Setup Guide](https://gtmsip.com/how-it-works)
+- [Platform Pricing & Tiers](https://gtmsip.com/pricing)
+- [Security, Compliance & Data Privacy](https://gtmsip.com/security)
+- [About GTMSip & Contact](https://gtmsip.com/about)
+
+## Key Solutions
+- [WhatsApp Marketing Automation](https://gtmsip.com/solutions/whatsapp-marketing)
+- [AI Sales Automation & Claude MCP](https://gtmsip.com/solutions/ai-sales-automation)
+- [B2B Lead Generation & Firecrawl](https://gtmsip.com/solutions/lead-generation-software)
+- [Instagram Comment-to-DM Automation](https://gtmsip.com/solutions/instagram-automation)
+
+## Knowledge & Playbooks
+- [Blog Hub & Articles](https://gtmsip.com/blog)
+- [Automating WhatsApp Marketing Safely](https://gtmsip.com/blog/how-to-automate-whatsapp-marketing)
+- [The Complete Guide to AI Sales Automation](https://gtmsip.com/blog/ai-sales-automation-guide)
+- [Automated B2B Lead Gen with Firecrawl](https://gtmsip.com/blog/b2b-lead-generation-firecrawl-google-sheets)
+- [Instagram Comment-to-DM Strategy](https://gtmsip.com/blog/instagram-comment-to-dm-strategy)
+
+## Legal & Compliance
+- [Privacy Policy](https://gtmsip.com/legal/privacy)
+- [Terms of Service](https://gtmsip.com/legal/terms)
+- [Cookie Notice](https://gtmsip.com/legal/cookies)
+- [Data Deletion Instructions](https://gtmsip.com/legal/data-deletion)
+- [Meta Data Use Statement](https://gtmsip.com/legal/meta-data-use)
+
+## Discoverability & Sitemaps
+- [Full XML Sitemap](https://gtmsip.com/sitemap.xml)
+- [Agentic Resource Discovery (ARD)](https://gtmsip.com/.well-known/ard.json)
