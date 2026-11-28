@@ -356,7 +356,7 @@ function run() {
       let template = fs.readFileSync(templatePath, 'utf-8');
 
       const semanticFallback = `<div id="root">
-    <div style="opacity:0;position:absolute;pointer-events:none;z-index:-1" aria-hidden="false">
+    <div class="sr-only">
       <h1>Automate Your Sales, Marketing &amp; Customer Engagement with AI</h1>
       <p>GTMSip is the AI-driven sales and marketing automation platform: Firecrawl lead scraping, Google plugins for data storage, Claude MCP workflows, and shared WhatsApp &amp; Instagram inbox to close deals.</p>
       <nav aria-label="Solutions and Key Sections">
@@ -435,7 +435,7 @@ function run() {
 
         // Inject page-specific semantic H1 and links
         const pageFallback = `<div id="root">
-    <div style="opacity:0;position:absolute;pointer-events:none;z-index:-1" aria-hidden="false">
+    <div class="sr-only">
       <h1>${route.title}</h1>
       <p>${route.description}</p>
       <nav aria-label="Main Navigation">

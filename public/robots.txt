@@ -11,6 +11,3 @@ Disallow: /*?token=*
 
 # Canonical Sitemap
 Sitemap: https://gtmsip.com/sitemap.xml
-
-# Agentic Resource Discovery
-Agentmap: https://gtmsip.com/.well-known/ard.json
